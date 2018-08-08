@@ -1,0 +1,17 @@
+#login-body{
+    height: 100vh;
+    background-image: url("../../../assets/images/background.png");
+    background-size: 100vw auto;
+}
+form{
+    width: 400px !important;
+}
+.no-margin{
+    margin: 0!important;
+}
+label{
+    color: black!important;
+}
+.z-depth-4{
+    box-shadow: 5px 5px 15px 2px rgba(0,0,0,0.8), 5px 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -7px rgba(0,0,0,0.5);
+}
