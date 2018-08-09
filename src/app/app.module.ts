@@ -6,6 +6,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ListadoDeUsuariosComponent } from './pages/listado-de-usuarios/listado-de-usuarios.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -13,11 +15,13 @@ import { FooterComponent } from './components/footer/footer.component';
     NavbarComponent,
     LoginComponent,
     DashboardComponent,
-    FooterComponent
+    FooterComponent,
+    ListadoDeUsuariosComponent
   ],
   imports: [
     BrowserModule,
-    MaterializeModule
+    MaterializeModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

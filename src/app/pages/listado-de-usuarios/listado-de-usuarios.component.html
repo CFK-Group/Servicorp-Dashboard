@@ -1,0 +1,160 @@
+<app-navbar></app-navbar>
+<main class="container row">
+  <div class="col m9">
+    <div class="card">
+      <div class="card-content light-blue darken-4 title">
+        <h5 class="white-text ">Listado de Usuarios</h5>
+      </div>
+      <div class="card-content">
+        <table class="striped">
+          <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Instalación HFC</th>
+                <th>Instalación DTH</th>
+                <th>Mantención HFC</th>
+                <th>Mantención DTH</th>
+                <th>Desconexión</th>
+                <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pepito</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+            </tr>
+            <tr>
+              <td>Juanito</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+            </tr>
+            <tr>
+              <td>Sara</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+            </tr>
+            <tr>
+              <td>Pepito</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+            </tr>
+            <tr>
+              <td>Juanito</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+            </tr>
+            <tr>
+              <td>Sara</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+            </tr>
+            <tr>
+              <td>Pepito</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+            </tr>
+            <tr>
+              <td>Juanito</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+            </tr>
+            <tr>
+              <td>Sara</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+            </tr>
+            <tr>
+              <td>Pepito</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+            </tr>
+            <tr>
+              <td>Juanito</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+            </tr>
+            <tr>
+              <td>Sara</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+              <td>321</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col m3">
+    <div class="card">
+      <div class="card-content light-blue darken-4 title">
+        <h5 class="white-text">Filtros</h5>
+      </div>
+      <div class="card-content">
+        <p><strong>Rango de Fecha</strong></p><br>
+        <div class="row">
+          <div class="col m6">
+            <label>Inicio</label>
+            <input type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
+          </div>
+          <div class="col m6">
+            <label>Fin</label>
+            <input type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
+          </div>
+        </div>
+        <p><strong>Nombre/Código</strong></p>
+        <div class="input-field">
+          <input type="text">
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>

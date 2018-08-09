@@ -8,8 +8,6 @@ import * as Chart from 'chart.js';
 })
 export class DashboardComponent implements OnInit {
 
-  titleFormsPerDay = 'Formularios por Día';
-  titlePerType = 'Formularios por tipo';
   FormsPerType:any;
   FormsPerDay:any;
 
@@ -18,34 +16,24 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     Chart.defaults.global.defaultFontColor = 'white';
     this.FormsPerDay = new Chart('formsPerDay', {
-      type: 'line',
+      type: 'line', // tipo de gráfico (line, bar, radar...)
       data: {
         labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
         datasets: [{
-          label: 'Cantidad de Formularios',
-          data: [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3,9,10,11,12,13,14,15,16,17, 19, 3, 5, 2, 3, 20, 19, 3, 5, 2],
-          backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
+          label: 'Items por Día',
+          data: [12,19,3,5,2,3,12,19,3,5,2,3,9,10,11,12,13,14,15,16,17, 19, 3, 5, 2,3,20,19,3,5,2],
+          backgroundColor: [ // color bajo la curva
+              'rgba(255,255,255, 0.2)'
           ],
-          borderColor: [
-              'rgba(255,99,132,1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
+          borderColor: [ // color de la curva
+              'rgba(255,255,255,1)'
           ],
           borderWidth: 2
         }]
       },
       options: {
         title: {
-          text: this.titleFormsPerDay,
+          text: 'Items creados desde el 1er día del mes anterior hasta hoy',
           display: true
         },
         scales: {
@@ -60,32 +48,68 @@ export class DashboardComponent implements OnInit {
     this.FormsPerType = new Chart('formsPerType', {
       type: 'line',
       data: {
-        labels: ['Instalación HFC','Instalación DTH','Mantención HFC','Matención DTH','Desconexión'],
-        datasets: [{
-          label: 'Cantidad de Formularios',
-          data: [12, 19, 3, 5, 2, 3, 20],
-          backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-              'rgba(255,99,132,1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 2
-        }]
+        labels: [1,2,3,4,5,6,7],
+        datasets: [
+          {
+            label: 'Instalación HFC',
+            data: [12,8,3,5,7,10,20],
+            backgroundColor: [ // color interior de las barras
+                'rgba(255,255,255, 0.2)'
+            ],
+            borderColor: [ // color del borde de las barras
+                'rgba(255,152,0,1)'
+            ],
+            borderWidth: 2
+          },
+          {
+            label: 'Instalación DTH',
+            data: [2,19,16,18,15,7,16],
+            backgroundColor: [ // color interior de las barras
+              'rgba(255,255,255, 0.2)'
+            ],
+            borderColor: [ // color del borde de las barras
+                'rgba(238,255,65,1)'
+            ],
+            borderWidth: 2
+          },
+          {
+            label: 'Mantención HFC',
+            data: [12,19,20,8,10,18,5],
+            backgroundColor: [ // color interior de las barras
+              'rgba(255,255,255, 0.2)'
+            ],
+            borderColor: [ // color del borde de las barras
+                'rgba(245,0,87,1)'
+            ],
+            borderWidth: 2
+          },
+          {
+            label: 'Matención DTH',
+            data: [12,15,5,14,2,12,13],
+            backgroundColor: [ // color interior de las barras
+              'rgba(255,255,255, 0.2)'
+            ],
+            borderColor: [ // color del borde de las barras
+                'rgba(98,0,234,1)'
+            ],
+            borderWidth: 2
+          },
+          {
+            label: 'Desconexión',
+            data: [12,4,10,10,20,3,11],
+            backgroundColor: [ // color interior de las barras
+              'rgba(255,255,255, 0.2)'
+            ],
+            borderColor: [ // color del borde de las barras
+                'rgba(0,230,118,1)'
+            ],
+            borderWidth: 2
+          },
+        ]
       },
       options: {
         title: {
-          text: this.titlePerType,
+          text: 'Items creados por categoría durante los últimos 7 días',
           display: true
         },
         scales: {
