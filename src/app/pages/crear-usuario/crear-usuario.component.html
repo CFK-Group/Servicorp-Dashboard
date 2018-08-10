@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="row">
+    <form class="col s12 l4 offset-l4 light-blue darken-4 card-panel hoverable animated bounceInLeft" materialize>
+        <div class="row center no-margin">
+            <i class="fas fa-user-circle fa-7x"></i>
+            <h5 class="white-text">Crear nuevo usuario</h5>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="nombre" type="text" class="validate" required="true" autofocus>
+                <label for="nombre">Nombre</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="apellido" type="text" class="validate" required="true">
+                <label for="apellido">Apellido</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="username" type="text" class="validate" required="true">
+                <label for="username">Username</label>
+            </div>
+        </div>
+        <div class="row no-margin">
+            <div class="input-field col s12">
+                <input id="password" type="password" class="validate" required="true">
+                <label for="password">Contraseña</label>
+            </div>
+        </div>
+        <div class="row">
+            <h6 class="col s12 white-text">Tipo de usuario</h6>
+            <div class="row"></div>
+            <label class="col s4">
+                <input id="tipo-usuario-1" class="with-gap" name="tipo_usuario" type="radio" value="Administrador" required="true"/>
+                <label for="tipo-usuario-1">Admin</label>
+            </label>
+            <label class="col s4">
+                <input id="tipo-usuario-2" class="with-gap" name="tipo_usuario" type="radio" value="Operario" required="true"/>
+                <label for="tipo-usuario-2">Certificador</label>
+            </label>
+        </div>
+        <div class="row">
+            <h6 class="col s12 white-text">Empresa</h6>
+            <div class="row"></div>
+            <label class="col s4">
+                <input id="empresa-1" class="with-gap" name="empresa" type="radio" value="Claro" required="true"/>
+                <label for="empresa-1">Claro</label>
+            </label>
+            <label class="col s4">
+                <input id="empresa-2" class="with-gap" name="empresa" type="radio" value="Entel" required="true"/>
+                <label for="empresa-2">Entel</label>
+            </label>
+        </div>
+        <div class="row">
+            <input type="submit" class="btn white black-text waves-effect waves-teal col s12" value="Crear Usuario">
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>

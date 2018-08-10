@@ -1,26 +1,23 @@
 <div class="navbar-fixed">
   <nav class="light-blue darken-4">
     <div class="nav-wrapper">
-      <a class="brand-logo"><img src="../../../assets/images/servicorp-logo.png"></a>
+      <a class="brand-logo"routerLink="/dashboard"><img src="../../../assets/images/servicorp-logo.png"></a>
       <ul class="right hide-on-med-and-down">
+        <li><a routerLink="/dashboard">Dashboard</a></li>
         <li><a class="dropdown-button" data-activates="usuarios" data-hover="true" data-beloworigin="true">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><a class="dropdown-button" data-activates="reportes" data-hover="true" data-beloworigin="true">Reportes<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a href="/login"><i class="material-icons right">exit_to_app</i>Salir</a></li>
+        <li><a routerLink="/login"><i class="material-icons right">exit_to_app</i>Salir</a></li>
       </ul>
     </div>
   </nav>
 </div>
 
 <ul id="usuarios" class="dropdown-content">
-  <li><a class="light-blue-text text-darken-4">one</a></li>
-  <li><a class="light-blue-text text-darken-4">two</a></li>
-  <li class="divider"></li>
-  <li><a class="light-blue-text text-darken-4">three</a></li>
+  <li><a class="light-blue-text text-darken-4" routerLink="/usuarios">Ver Usuarios</a></li>
+  <li><a class="light-blue-text text-darken-4" routerLink="/crear-usuario">Crear Usuario</a></li>
 </ul>
 
 <ul id="reportes" class="dropdown-content">
-  <li><a class="light-blue-text text-darken-4">one</a></li>
-  <li><a class="light-blue-text text-darken-4">two</a></li>
-  <li class="divider"></li>
-  <li><a class="light-blue-text text-darken-4">three</a></li>
+  <li><a class="light-blue-text text-darken-4">Reportes por categoría</a></li>
+  <li><a class="light-blue-text text-darken-4">Imágenes por día</a></li>
 </ul>

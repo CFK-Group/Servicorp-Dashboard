@@ -1,0 +1,39 @@
+.no-margin{
+    margin: 0!important;
+}
+label{
+    color: white!important;
+}
+/* label color */
+.input-field label {
+    color: #fff;
+}
+/* label focus color */
+.input-field input:focus + label {
+    color: #fff;
+}
+/* label underline focus color */
+.input-field input:focus {
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 1px 0 0 #fff;
+}
+/* valid color */
+.input-field input.valid {
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 1px 0 0 #fff;
+}
+/* invalid color */
+.input-field input.invalid {
+    border-bottom: 1px solid rgb(255, 0, 0);
+    box-shadow: 0 1px 0 0 #rgba(255, 0, 0, 0.2);
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+    color: #fff;
+}
+[type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after, [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after, [type="radio"]:checked {
+    border: 2px solid #fff;
+}
+[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
+    background-color: #fff;
+}
