@@ -23,25 +23,9 @@
         </div>
       </div>
     </div>
-    <ul class="collection with-header col m4 card-panel hoverable">
+    <ul class="collection with-header col m4 card-panel no-padding hoverable">
       <li class="collection-header valign-wrapper"><h5><i class="material-icons md-36 left">account_box</i>Usuarios</h5></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
-      <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
+      <li *ngFor="let usuario of usuarios" class="collection-item hover"><div>{{usuario.nombre}}<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></div></li>
     </ul>
   </div>
 </main>

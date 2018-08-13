@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import * as Chart from 'chart.js';
+import { Component, OnInit } from '@angular/core'
+import * as Chart from 'chart.js'
+import { ApiService } from "../../providers/api.service"
 
 @Component({
   selector: 'app-dashboard',
@@ -8,13 +9,21 @@ import * as Chart from 'chart.js';
 })
 export class DashboardComponent implements OnInit {
 
-  FormsPerType:any;
-  FormsPerDay:any;
+  FormsPerType:any
+  FormsPerDay:any
+  usuarios:any
 
-  constructor() { }
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
-    Chart.defaults.global.defaultFontColor = 'white';
+    this.api.getUsers()
+    .then((res:any) => {
+      this.usuarios = res
+    })
+    .catch((err) => {
+      console.error('Error: ' + err.message)
+    })
+    Chart.defaults.global.defaultFontColor = 'white'
     this.FormsPerDay = new Chart('formsPerDay', {
       type: 'line', // tipo de gráfico (line, bar, radar...)
       data: {
@@ -44,7 +53,7 @@ export class DashboardComponent implements OnInit {
           }]
         }
       }
-    });
+    })
     this.FormsPerType = new Chart('formsPerType', {
       type: 'line',
       data: {
@@ -120,6 +129,6 @@ export class DashboardComponent implements OnInit {
           }]
         }
       }
-    });
+    })
   }
 }

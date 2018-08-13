@@ -9,6 +9,14 @@ main {
     flex: 1 0 auto;
 }
 
-.container{
+.container {
     width: 85%;
+}
+
+.hover:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.no-padding  {
+    padding: auto 0;
 }

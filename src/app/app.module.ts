@@ -11,6 +11,9 @@ import { ListadoDeUsuariosComponent } from './pages/listado-de-usuarios/listado-
 import { AppRoutingModule } from './app-routing.module'
 import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.component'
 import { NotFoundComponent } from "./pages/not-found/not-found.component"
+import { LoadingModule } from 'ngx-loading'
+import { ApiService } from './providers/api.service'
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -24,13 +27,15 @@ import { NotFoundComponent } from "./pages/not-found/not-found.component"
     NotFoundComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     MaterializeModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LoadingModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

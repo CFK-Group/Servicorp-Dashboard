@@ -1,11 +1,11 @@
 <div id="login-body" class="valign-wrapper light-blue darken-4">
   <div class="row center">
-    <img src="../../../assets/images/servicorp-logo.png" class="responsive-img">
-    <form class="card-panel hoverable animated" materialize [formGroup]="loginForm" (ngSubmit)="login()">
-        <div class="row center no-margin">
+      <form class="card-panel hoverable animated" materialize [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="row center no-margin">
             <i class="fas fa-user-circle fa-7x"></i>
-            <h5>Iniciar Sesión</h5>
+            <h4 class="light-blue-text text-darken-4"><strong>Iniciar Sesión</strong></h4>
         </div>
+        <img src="../../../assets/images/servicorp-logo.png" class="responsive-img">
         <div class="row">
             <div class="input-field col s12">
                 <input formControlName="username" type="text" class="validate" required="true" autofocus>
@@ -23,5 +23,6 @@
             <button type="submit" class="btn light-blue darken-4 col s12" value="Entrar" [disabled]="!loginForm.valid">Entrar</button>
         </div>
     </form>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
   </div>
 </div>

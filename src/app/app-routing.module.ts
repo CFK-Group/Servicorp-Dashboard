@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'usuarios', component: ListadoDeUsuariosComponent },
   { path: 'crear-usuario', component: CrearUsuarioComponent },
   { path: '404', component: NotFoundComponent },
-  { path: '**', redirectTo: '/404' },
+  { path: '**', redirectTo: '/404' }
 ];
 
 @NgModule({	
