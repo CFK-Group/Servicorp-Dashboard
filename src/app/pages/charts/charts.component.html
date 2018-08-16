@@ -1,0 +1,30 @@
+<main class="container">
+  <div class="row">
+    <div class="col s12 l8">
+      <div class="card hoverable">
+        <div class="card-content light-blue darken-2">
+          <h5 class="white-text center">Creación de Formularios</h5>
+          <canvas id="formsPerDay" class="chartjs-render-monitor"></canvas>
+        </div>
+        <div class="card-content hide">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+      <div class="card hoverable">
+        <div class="card-content teal accent-4">
+          <h5 class="white-text center">Formularios por tipo de categoría</h5>
+          <canvas id="formsPerType" class="chartjs-render-monitor"></canvas>
+        </div>
+        <div class="card-content hide">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 l4">
+      <ul class="collection with-header card-panel no-padding hoverable">
+        <li class="collection-header"><h5><i class="material-icons md-36 left">account_circle</i>Usuarios</h5></li>
+        <li *ngFor="let usuario of usuarios" class="collection-item hover">{{usuario.nombre}}<a href="#!" class="secondary-content"><i class="material-icons light-blue-text text-darken-4">library_books</i></a></li>
+      </ul>
+    </div>
+  </div>
+</main>

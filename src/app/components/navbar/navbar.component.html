@@ -1,23 +1,36 @@
-<div class="navbar-fixed">
+<div class="navbar-fixed" materialize>
   <nav class="light-blue darken-4">
     <div class="nav-wrapper">
-      <a class="brand-logo"routerLink="/dashboard"><img src="../../../assets/images/servicorp-logo.png"><i class="material-icons right">user</i></a>
+      <a materialize="sideNav" data-activates="slide-out" class="button-collapse hide-on-med-and-up"><i class="material-icons">menu</i></a>
+      <a class="brand-logo center-on-small-only" routerLink="/dashboard/"><img class="responsive-img" src="../../../assets/images/servicorp-logo.png"><i class="material-icons right">user</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a routerLink="/dashboard">Dashboard</a></li>
-        <li><a class="dropdown-button" data-activates="reportes" data-hover="true" data-beloworigin="true">Reportes<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a class="dropdown-button" data-activates="usuarios" data-hover="true" data-beloworigin="true">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a (click)="logout()" routerLink="/login"><i class="material-icons right">exit_to_app</i>Salir</a></li>
+        <li><a materialize="dropdown" class="dropdown-button" data-activates="reportes" data-hover="true" data-beloworigin="true">Reportes<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a materialize="dropdown" class="dropdown-button" data-activates="usuarios" data-hover="true" data-beloworigin="true">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a (click)="logout()" routerLink="/login"><i class="material-icons">exit_to_app</i></a></li>
       </ul>
     </div>
   </nav>
 </div>
 
 <ul id="usuarios" class="dropdown-content">
-  <li><a class="light-blue-text text-darken-4" routerLink="/usuarios">Ver Usuarios</a></li>
-  <li><a class="light-blue-text text-darken-4" routerLink="/crear-usuario">Crear Usuario</a></li>
+  <li><a class="light-blue-text text-darken-4" routerLink="/dashboard/usuarios">Ver Usuarios</a></li>
+  <li><a class="light-blue-text text-darken-4" routerLink="/dashboard/crear-usuario">Crear Usuario</a></li>
 </ul>
 
 <ul id="reportes" class="dropdown-content">
-  <li><a class="light-blue-text text-darken-4">Reportes por categoría</a></li>
-  <li><a class="light-blue-text text-darken-4">Imágenes por día</a></li>
+  <li><a class="light-blue-text text-darken-4" routerLink="/dashboard/reportes">Reportes por categoría</a></li>
+  <li><a class="light-blue-text text-darken-4" routerLink="/dashboard/imagenes">Imágenes por día</a></li>
+</ul>
+
+<ul id="slide-out" class="side-nav">
+  <li class="center">
+    <div class="user-view light-blue darken-4">
+      <a href="#!user"><img class="responsive-img" src="../../../assets/images/servicorp-logo.png"></a>
+    </div>
+  </li>
+  <li><a routerLink="/dashboard">Dashboard</a></li>
+  <li><a class="dropdown-button" data-activates="reportes" data-hover="true" data-beloworigin="true">Reportes<i class="material-icons right">arrow_drop_down</i></a></li>
+  <li><a class="dropdown-button" data-activates="usuarios" data-hover="true" data-beloworigin="true">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
+  <li><a (click)="logout()" routerLink="/login"><i class="material-icons right">exit_to_app</i>Salir</a></li>
 </ul>

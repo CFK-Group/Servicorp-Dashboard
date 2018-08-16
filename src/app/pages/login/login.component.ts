@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
       if(res.success === true){
         localStorage.setItem('userToken', res.token)
         localStorage.setItem('userId', res.id_usuario)
+        localStorage.setItem('username', this.loginForm.value.username)
         this.router.navigate(['/dashboard'])
       }else{
         // let alert = this.alertCtrl.create({

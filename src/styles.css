@@ -1,22 +1,43 @@
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
 /* You can add global styles to this file, and also import other style files */
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
-
 main {
     flex: 1 0 auto;
 }
-
 .container {
     width: 85%;
 }
-
 .hover:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
-
 .no-padding  {
     padding: auto 0;
+}
+.no-margin{
+    margin: 0!important;
+}
+label{
+    color: #000!important;
+}
+[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
+    background-color: #5a5a5a;
+}
+[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+    border: 2px solid #5a5a5a;
+}
+input:not([type="submit"]), input.valid{
+    box-shadow: 0 0 0 0 !important;
+    border-bottom: 1px solid #5a5a5a !important;
+}
+input.invalid{
+    border-bottom: 1px solid red !important;
 }

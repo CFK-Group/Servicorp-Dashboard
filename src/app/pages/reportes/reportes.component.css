@@ -1,0 +1,7 @@
+.title {
+    padding: 1px 24px;
+    border-radius: 0 0 2px 2px;
+}
+.picker__date-display {
+    background-color: #01579b !important;
+}
