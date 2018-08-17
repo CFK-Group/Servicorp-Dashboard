@@ -5,3 +5,6 @@
 .picker__date-display {
     background-color: #01579b !important;
 }
+.dropdown-content{
+    width: 120% !important;
+}
