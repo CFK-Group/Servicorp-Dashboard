@@ -8,12 +8,22 @@
     </div>
     <div class="card-panel no-margin">
       <div class="row">
-        <h6><strong>Rango de Fecha</strong></h6><br>
-        <div class="col s12 l6">
+        <div class="input-field col l12">
+          <h6><strong>Empresa: </strong></h6>
+          <select materialize="material_select" [materializeSelectOptions]="empresa" class="white">
+            <option disabled>Seleccionar</option>
+            <option [value]="empresa">Claro</option>
+            <option [value]="empresa">Entel</option>
+          </select>
+        </div>
+        <div class="input-field col l12">
+          <h6><strong>Rango de Fecha:</strong></h6>
+        </div>
+        <div class="input-field col l6">
           <label>Inicio</label>
           <input type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
         </div>
-        <div class="col s12 l6">
+        <div class="input-field col l6">
           <label>Fin</label>
           <input type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
         </div>
