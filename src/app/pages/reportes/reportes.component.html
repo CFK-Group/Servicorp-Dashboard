@@ -1,39 +1,57 @@
 <div class="row"></div>
 <div class="row">
-  <div class="col l6 offset-l3">
+  <div [formGroup]="reportes" class="col l6 offset-l3">
     <div class="card-panel no-margin light-blue darken-4 title">
       <h5 class="white-text">Generar Reporte</h5>
     </div>
     <div class="card-panel no-margin">
       <div class="row">
-        <h6><strong>Rango de Fecha</strong></h6><br>
+        <div class="input-field col l12">
+          <h6><strong>Rango de Fecha</strong></h6>
+        </div>
         <div class="col s12 l6">
           <label>Inicio</label>
-          <input type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
+          <input  formControlName="fechaInicio" type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
         </div>
         <div class="col s12 l6">
           <label>Fin</label>
-          <input type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
+          <input  formControlName="fechaFin" type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 l6">
           <h6><strong>Empresa: </strong></h6>
-          <select materialize="material_select" [materializeSelectOptions]="empresa" class="white">
+          <select formControlName="empresa" materialize="material_select" class="white">
             <option disabled>Seleccionar</option>
-            <option [value]="empresa">Claro</option>
-            <option [value]="empresa">Entel</option>
+            <option value="Claro">Claro</option>
+            <option value="Entel">Entel</option>
           </select>
         </div>
-        <div class="input-field col s12 l6">
+        <div class="input-field col s12 l6" *ngIf="reportes.value.empresa == ''">
           <h6><strong>Categoría: </strong></h6>
-          <select materialize="material_select" [materializeSelectOptions]="categorias" class="white" multiple>
-            <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
+          <select formControlName="categoria" materialize="material_select" class="white">
+            <option value="" disabled>Seleccione empresa</option>
+          </select>
+        </div>
+        <div class="input-field col s12 l6" *ngIf="reportes.value.empresa == 'Claro'">
+          <h6><strong>Categoría: </strong></h6>
+          <select formControlName="categoria" materialize="material_select" class="white" multiple>
+            <option value="Instalación HFC">Instalación HFC</option>
+            <option value="Instalación DTH">Instalación DTH</option>
+            <option value="Mantención HFC">Mantención HFC</option>
+            <option value="Mantención DTH">Mantención DTH</option>
+            <option value="Desconexión">Desconexión</option>
+          </select>
+        </div>
+        <div class="input-field col s12 l6" *ngIf="reportes.value.empresa == 'Entel'">
+          <h6><strong>Categoría: </strong></h6>
+          <select formControlName="categoria" materialize="material_select" class="white" multiple>
+            <option value="Instalación DTH">Instalación DTH</option>
           </select>
         </div>
       </div>
       <div class="center">
-        <a class="btn light-blue darken-4">{{empresa}}</a>
+        <a class="btn light-blue darken-4" (click)="prueba()">Descargar</a>
       </div>
     </div>
   </div>
