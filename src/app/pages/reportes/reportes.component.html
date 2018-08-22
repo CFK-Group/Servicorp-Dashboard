@@ -1,6 +1,6 @@
 <div class="row"></div>
 <div class="row">
-  <div class="col l4 offset-l4">
+  <div class="col l6 offset-l3">
     <div class="card-panel no-margin light-blue darken-4 title">
       <h5 class="white-text">Generar Reporte</h5>
     </div>
@@ -18,26 +18,22 @@
       </div>
       <div class="row">
         <div class="input-field col s12 l6">
-          <h6><strong>Categoría: </strong></h6>
-          <select materialize="material_select" class="white" multiple>
-            <option [value]="categoria">Mantención HFC</option>
-            <option [value]="categoria">Mantención DTH</option>
-            <option [value]="categoria">Instalación HFC</option>
-            <option [value]="categoria">Instalación DTH</option>
-            <option [value]="categoria">Desconexión</option>
-          </select>
-        </div>
-        <div class="input-field col s12 l6">
           <h6><strong>Empresa: </strong></h6>
-          <select materialize="material_select" class="white">
-            <option selected>Seleccionar</option>
+          <select materialize="material_select" [materializeSelectOptions]="empresa" class="white">
+            <option disabled>Seleccionar</option>
             <option [value]="empresa">Claro</option>
             <option [value]="empresa">Entel</option>
           </select>
         </div>
+        <div class="input-field col s12 l6">
+          <h6><strong>Categoría: </strong></h6>
+          <select materialize="material_select" [materializeSelectOptions]="categorias" class="white" multiple>
+            <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
+          </select>
+        </div>
       </div>
       <div class="center">
-        <a class="btn light-blue darken-4">Descargar</a>
+        <a class="btn light-blue darken-4">{{empresa}}</a>
       </div>
     </div>
   </div>

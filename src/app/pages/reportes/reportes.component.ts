@@ -7,12 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportesComponent implements OnInit {
 
-  categoria:string
-  empresa:string
-
+  empresa
+  categorias
+  
   constructor() { }
-
+  
   ngOnInit() {
+    if(this.empresa == 'Claro'){
+      this.categorias = ['Instalación HFC', 'Instalación DTH', 'Mantención HFC', 'Mantención DTH', 'Desconexión']
+    }else if(this.empresa == 'Entel'){
+      this.categorias = ['Desconexión']
+    }
+    console.log(this.empresa)
   }
 
 }
