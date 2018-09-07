@@ -4,7 +4,9 @@
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
-/* You can add global styles to this file, and also import other style files */
+.select-wrapper input.select-dropdown{
+    max-height: 2rem !important;
+}
 body {
     display: flex;
     min-height: 100vh;
@@ -14,10 +16,10 @@ main {
     flex: 1 0 auto;
 }
 .container {
-    width: 85%;
+    width: 75%;
 }
 .hover:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(26, 18, 18, 0.1);
 }
 .no-padding  {
     padding: auto 0;

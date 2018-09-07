@@ -6,15 +6,17 @@
 .card-panel {
     padding-bottom: 0px !important;
 }
-select {
-    border-radius: 5px;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-}
 .picker__holder {
     position: initial;
 }
 .picker__box {
     display: inline-block !important;
     box-shadow: 0 !important;
+}
+.title {
+    padding: 1px 20px;
+    border-radius: 0 0 2px 2px;
+}
+input[type="text"]{
+    height: 2rem !important;
 }
