@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { ApiService } from '../../providers/api.service'
 
 @Component({
   selector: 'app-listado-de-usuarios',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoDeUsuariosComponent implements OnInit {
 
-  constructor() { }
+  users = []
+
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
   }
 
+  getUsersForms(){
+    this.api.getUsersForms()
+    .then((res:any) => {
+      this.users = res
+      console.table(this.users)
+    })
+  }
 }

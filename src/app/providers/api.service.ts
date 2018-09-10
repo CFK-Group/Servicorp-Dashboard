@@ -39,4 +39,8 @@ export class ApiService {
     return this.api.get(`${this.url}/users`).toPromise()
   }
 
+  getUsersForms(){
+    return this.api.get(`${this.url}/users/forms`).toPromise()
+  }
+
 }
