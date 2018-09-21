@@ -15,6 +15,10 @@ export class ApiService {
 
   constructor(public api: HttpClient) { }
 
+  getZips(){
+    return this.api.get(`${this.url}/zips-imgs/${localStorage.getItem('userToken')}`).toPromise()
+  }
+  
   login(user: User){
     return this.api.post<User>(`${this.url}/login`, user).toPromise()
   }
