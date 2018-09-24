@@ -18,18 +18,13 @@ export class ChartsComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-    console.log('Cantidad de Días del mes anterior: ' + this.cantidadDiasMesAnterior())
-    console.log('Cantidad de Días del mes actual hasta hoy: ' + this.cantidadDiasMesActualHastaHoy())
-    console.log('Cantidad de Días desde el mes actual hasta hoy: ' + this.diasTotales())
-    console.log('fechaActual: ' + this.fechaActual)
-    this.api.getUsers()
-    this.api.getUsers()
-    .then((res:any) => {
-      this.usuarios = res
-    })
-    .catch((err) => {
-      console.error('Error: ' + err.message)
-    })
+    // this.api.getUsers()
+    // .then((res:any) => {
+    //   this.usuarios = res
+    // })
+    // .catch((err) => {
+    //   console.error('Error: ' + err.message)
+    // })
     Chart.defaults.global.defaultFontColor = 'white'
     let data = {
       claro: this.dias('claro'),
@@ -135,7 +130,6 @@ export class ChartsComponent implements OnInit {
         console.error('Error: ' + err.message)
       })
     }
-    console.log(dias)
     return dias
   }
 

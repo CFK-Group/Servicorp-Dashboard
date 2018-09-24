@@ -19,15 +19,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td routerLink="/dashboard/18/reportes">Pepito</td>
-              <td>321</td>
-              <td>321</td>
-              <td>321</td>
-              <td>321</td>
-              <td>321</td>
-              <td>321</td>
-              <td routerLink="/dashboard/18/reportes">321</td>
+            <tr *ngFor="let user of users">
+              <td routerLink="/dashboard/18/reportes">{{user.nombre}}</td>
+              <td>{{user.cantidad.instalacionHfc}}</td>
+              <td>{{user.cantidad.instalacionDth}}</td>
+              <td>{{user.cantidad.mantencionHfc}}</td>
+              <td>{{user.cantidad.mantencionDth}}</td>
+              <td>{{user.cantidad.desconexion}}</td>
+              <td>{{user.cantidad.instalacionDthEntel}}</td>
+              <td routerLink="/dashboard/18/reportes">{{user.cantidad.total}}</td>
             </tr>
           </tbody>
         </table>

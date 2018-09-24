@@ -51,4 +51,8 @@ export class ApiService {
     return this.api.get(`${this.url}/formularios/${empresa}/fechas/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`).toPromise()
   }
 
+  getTotalFormsByUserId(userId){
+    return this.api.get(`${this.url}/formularios/${userId}/${localStorage.getItem('userToken')}`).toPromise()
+  }
+
 }
