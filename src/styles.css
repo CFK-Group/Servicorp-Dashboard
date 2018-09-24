@@ -4,20 +4,36 @@
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
-/* You can add global styles to this file, and also import other style files */
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+.select-wrapper input.select-dropdown{
+    max-height: 2rem !important;
 }
-main {
-    flex: 1 0 auto;
+* {
+    box-sizing: border-box;
+}
+*:before, *:after {
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    position: relative;
+}
+app-root {
+    min-height: 100vh; /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 40px; /* height of your footer */
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 .container {
-    width: 85%;
+    width: 75%;
 }
 .hover:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(26, 18, 18, 0.1);
 }
 .no-padding  {
     padding: auto 0;

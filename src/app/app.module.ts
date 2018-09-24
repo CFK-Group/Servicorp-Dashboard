@@ -13,10 +13,10 @@ import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.compo
 import { NotFoundComponent } from "./pages/not-found/not-found.component"
 import { LoadingModule } from 'ngx-loading'
 import { ApiService } from './providers/api.service'
-import { HttpClientModule } from '@angular/common/http';
-import { ChartsComponent } from './pages/charts/charts.component';
-import { ListadoFormulariosComponent } from './pages/listado-formularios/listado-formularios.component';
-import { ReportesComponent } from './pages/reportes/reportes.component';
+import { HttpClientModule } from '@angular/common/http'
+import { ChartsComponent } from './pages/charts/charts.component'
+import { ListadoFormulariosComponent } from './pages/listado-formularios/listado-formularios.component'
+import { ReportesComponent } from './pages/reportes/reportes.component'
 import { ImagenesComponent } from './pages/imagenes/imagenes.component'
 
 @NgModule({

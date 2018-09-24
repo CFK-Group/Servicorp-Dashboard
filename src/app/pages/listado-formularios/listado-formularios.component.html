@@ -3,7 +3,7 @@
     <div class="card-panel light-blue darken-4 title">
       <div class="row">
         <h5 class="white-text col">Categoría: </h5>
-        <div class="input-field col l3">
+        <div class="input-field col">
           <select materialize="material_select" class="white">
             <option [value]="categoria">Mantención HFC</option>
             <option [value]="categoria">Mantención DTH</option>
@@ -13,8 +13,8 @@
           </select>
         </div>
         <h5 class="white-text col">Día: </h5>
-        <div class="input-field col l3">
-          <input type="text" class="datepicker white" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true, container: section}]">
+        <div class="input-field col">
+          <input type="text" class="datepicker white center" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true, container: section}]">
         </div>
       </div>
     </div>
@@ -579,7 +579,4 @@
       </table>
     </div>
   </div>
-  <section>
-
-  </section>
 </main>

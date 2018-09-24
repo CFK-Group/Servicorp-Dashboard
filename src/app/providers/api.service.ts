@@ -15,6 +15,10 @@ export class ApiService {
 
   constructor(public api: HttpClient) { }
 
+  getZips(){
+    return this.api.get(`${this.url}/zips-imgs/${localStorage.getItem('userToken')}`).toPromise()
+  }
+  
   login(user: User){
     return this.api.post<User>(`${this.url}/login`, user).toPromise()
   }
@@ -37,6 +41,18 @@ export class ApiService {
 
   getUsers(){
     return this.api.get(`${this.url}/users`).toPromise()
+  }
+
+  getUsersForms(){
+    return this.api.get(`${this.url}/users/forms`).toPromise()
+  }
+
+  getTotalFormsByDate(empresa:string, fechaInicio, fechaFin){ // la fecha debe estar en formato yyyy-mm-dd y el rango es de tipo [)
+    return this.api.get(`${this.url}/formularios/${empresa}/fechas/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`).toPromise()
+  }
+
+  getTotalFormsByUserId(userId){
+    return this.api.get(`${this.url}/formularios/${userId}/${localStorage.getItem('userToken')}`).toPromise()
   }
 
 }

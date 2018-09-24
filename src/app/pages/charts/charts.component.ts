@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import * as Chart from 'chart.js'
 import { ApiService } from "../../providers/api.service"
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-charts',
@@ -9,28 +10,33 @@ import { ApiService } from "../../providers/api.service"
 })
 export class ChartsComponent implements OnInit {
 
-  FormsPerType:any
-  FormsPerDay:any
+  entel:any
+  claro:any
   usuarios:any
+  fechaActual = moment()
 
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-    this.api.getUsers()
-    .then((res:any) => {
-      this.usuarios = res
-    })
-    .catch((err) => {
-      console.error('Error: ' + err.message)
-    })
+    // this.api.getUsers()
+    // .then((res:any) => {
+    //   this.usuarios = res
+    // })
+    // .catch((err) => {
+    //   console.error('Error: ' + err.message)
+    // })
     Chart.defaults.global.defaultFontColor = 'white'
-    this.FormsPerDay = new Chart('formsPerDay', {
+    let data = {
+      claro: this.dias('claro'),
+      entel: this.dias('entel')
+    }
+    this.claro = new Chart('claro', {
       type: 'line', // tipo de gráfico (line, bar, radar...)
       data: {
-        labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
+        labels: data.claro.dias,
         datasets: [{
           label: 'Items por Día',
-          data: [12,19,3,5,2,3,12,19,3,5,2,3,9,10,11,12,13,14,15,16,17, 19, 3, 5, 2,3,20,19,3,5,2],
+          data: data.claro.valor,
           backgroundColor: [ // color bajo la curva
               'rgba(255,255,255, 0.2)'
           ],
@@ -54,71 +60,25 @@ export class ChartsComponent implements OnInit {
         }
       }
     })
-    this.FormsPerType = new Chart('formsPerType', {
-      type: 'line',
+    this.entel = new Chart('entel', {
+      type: 'line', // tipo de gráfico (line, bar, radar...)
       data: {
-        labels: [1,2,3,4,5,6,7],
-        datasets: [
-          {
-            label: 'Instalación HFC',
-            data: [12,8,3,5,7,10,20],
-            backgroundColor: [ // color interior de las barras
-                'rgba(255,255,255, 0.2)'
-            ],
-            borderColor: [ // color del borde de las barras
-                'rgba(255,152,0,1)'
-            ],
-            borderWidth: 2
-          },
-          {
-            label: 'Instalación DTH',
-            data: [2,19,16,18,15,7,16],
-            backgroundColor: [ // color interior de las barras
+        labels: data.entel.dias,
+        datasets: [{
+          label: 'Items por Día',
+          data: data.entel.valor,
+          backgroundColor: [ // color bajo la curva
               'rgba(255,255,255, 0.2)'
-            ],
-            borderColor: [ // color del borde de las barras
-                'rgba(238,255,65,1)'
-            ],
-            borderWidth: 2
-          },
-          {
-            label: 'Mantención HFC',
-            data: [12,19,20,8,10,18,5],
-            backgroundColor: [ // color interior de las barras
-              'rgba(255,255,255, 0.2)'
-            ],
-            borderColor: [ // color del borde de las barras
-                'rgba(245,0,87,1)'
-            ],
-            borderWidth: 2
-          },
-          {
-            label: 'Matención DTH',
-            data: [12,15,5,14,2,12,13],
-            backgroundColor: [ // color interior de las barras
-              'rgba(255,255,255, 0.2)'
-            ],
-            borderColor: [ // color del borde de las barras
-                'rgba(98,0,234,1)'
-            ],
-            borderWidth: 2
-          },
-          {
-            label: 'Desconexión',
-            data: [12,4,10,10,20,3,11],
-            backgroundColor: [ // color interior de las barras
-              'rgba(255,255,255, 0.2)'
-            ],
-            borderColor: [ // color del borde de las barras
-                'rgba(0,230,118,1)'
-            ],
-            borderWidth: 2
-          },
-        ]
+          ],
+          borderColor: [ // color de la curva
+              'rgba(255,255,255,1)'
+          ],
+          borderWidth: 2
+        }]
       },
       options: {
         title: {
-          text: 'Items creados por categoría durante los últimos 7 días',
+          text: 'Items creados desde el 1er día del mes anterior hasta hoy',
           display: true
         },
         scales: {
@@ -130,5 +90,55 @@ export class ChartsComponent implements OnInit {
         }
       }
     })
+  }
+
+  cantidadDiasMesAnterior(){
+    var fecha = new Date()
+	  return new Date(fecha.getFullYear(), fecha.getMonth(), 0).getDate()
+  }
+
+  cantidadDiasMesActualHastaHoy(){
+    var fecha = new Date()
+	  return fecha.getDate()
+  }
+
+  dias(empresa:string){
+    let dias = {
+      valor: [],
+      dias: []
+    }
+    let fechaActual = this.fechaActual
+    for(var i=0; i<this.cantidadDiasMesAnterior(); i++){
+      dias.dias.push(i)
+      this.api.getTotalFormsByDate(empresa, this.primerDiaMesAnterior().add(i, 'days').format('YYYY-MM-DD'),this.primerDiaMesAnterior().add(i + 1, 'days').format('YYYY-MM-DD'))
+      .then((res:any) => {
+        dias.valor.push(res.data.total)
+      })
+      .catch((err) => {
+        i = this.cantidadDiasMesAnterior()
+        console.error('Error: ' + err.message)
+      })
+    }
+    for(var i=0; i<this.cantidadDiasMesActualHastaHoy(); i++){
+      dias.dias.push(i)
+      this.api.getTotalFormsByDate(empresa, this.primerDiaMesAnterior().add(i, 'days').format('YYYY-MM-DD'),this.primerDiaMesAnterior().add(i + 1, 'days').format('YYYY-MM-DD'))
+      .then((res:any) => {
+        dias.valor.push(res.data.total)
+      })
+      .catch((err) => {
+        i = this.cantidadDiasMesAnterior()
+        console.error('Error: ' + err.message)
+      })
+    }
+    return dias
+  }
+
+  diasTotales(){
+    return this.cantidadDiasMesAnterior() + this.cantidadDiasMesActualHastaHoy()
+  }
+
+  primerDiaMesAnterior(){
+    let fecha = moment()
+    return fecha.subtract(this.diasTotales() - 1, 'd')
   }
 }
