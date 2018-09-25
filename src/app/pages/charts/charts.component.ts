@@ -14,82 +14,33 @@ export class ChartsComponent implements OnInit {
   claro:any
   usuarios:any
   fechaActual = moment()
+  data = {
+    claro: {
+      dias: [],
+      valor: []
+    },
+    entel: {
+      dias: [],
+      valor: []
+    }
+  }
+  fechas = []
 
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-    // this.api.getUsers()
-    // .then((res:any) => {
-    //   this.usuarios = res
-    // })
-    // .catch((err) => {
-    //   console.error('Error: ' + err.message)
-    // })
-    Chart.defaults.global.defaultFontColor = 'white'
-    let data = {
-      claro: this.dias('claro'),
-      entel: this.dias('entel')
+    for(var i=0; i<this.cantidadDiasMesAnterior(); i++){
+      this.data.claro.dias.push(this.primerDiaMesAnterior().add(i, 'days').format('DD'))
+      this.data.entel.dias.push(this.primerDiaMesAnterior().add(i, 'days').format('DD'))
+      this.fechas.push(this.primerDiaMesAnterior().add(i, 'days').format('YYYY-MM-DD'))
     }
-    this.claro = new Chart('claro', {
-      type: 'line', // tipo de gráfico (line, bar, radar...)
-      data: {
-        labels: data.claro.dias,
-        datasets: [{
-          label: 'Items por Día',
-          data: data.claro.valor,
-          backgroundColor: [ // color bajo la curva
-              'rgba(255,255,255, 0.2)'
-          ],
-          borderColor: [ // color de la curva
-              'rgba(255,255,255,1)'
-          ],
-          borderWidth: 2
-        }]
-      },
-      options: {
-        title: {
-          text: 'Items creados desde el 1er día del mes anterior hasta hoy',
-          display: true
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    })
-    this.entel = new Chart('entel', {
-      type: 'line', // tipo de gráfico (line, bar, radar...)
-      data: {
-        labels: data.entel.dias,
-        datasets: [{
-          label: 'Items por Día',
-          data: data.entel.valor,
-          backgroundColor: [ // color bajo la curva
-              'rgba(255,255,255, 0.2)'
-          ],
-          borderColor: [ // color de la curva
-              'rgba(255,255,255,1)'
-          ],
-          borderWidth: 2
-        }]
-      },
-      options: {
-        title: {
-          text: 'Items creados desde el 1er día del mes anterior hasta hoy',
-          display: true
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    })
+    for(var i=0; i<=this.cantidadDiasMesActualHastaHoy(); i++){ // enviamos un dia más del que necesitamos para facilitar los calculos en la api
+      this.data.claro.dias.push(this.primerDiaMesActual().add(i, 'days').format('DD'))
+      this.data.entel.dias.push(this.primerDiaMesActual().add(i, 'days').format('DD'))
+      this.fechas.push(this.primerDiaMesActual().add(i, 'days').format('YYYY-MM-DD'))
+    }
+    this.totalFormsByDate('claro')
+    this.totalFormsByDate('entel')
   }
 
   cantidadDiasMesAnterior(){
@@ -102,35 +53,92 @@ export class ChartsComponent implements OnInit {
 	  return fecha.getDate()
   }
 
-  dias(empresa:string){
-    let dias = {
-      valor: [],
-      dias: []
+  totalFormsByDate(empresa:string){
+    this.api.getTotalFormsByDate(empresa, this.fechas)
+    .then((res:any) => {
+      if(empresa == 'claro'){
+        // array con valores totales en el mismo orden de las fechas enviadas
+        for(let i=0; i<res.data.length; i++){
+          this.data.claro.valor.push(res.data[i].cantidad)
+        }
+      }else if(empresa == 'entel'){
+        // array con valores totales en el mismo orden de las fechas enviadas
+        for(let i=0; i<res.data.length; i++){
+          this.data.entel.valor.push(res.data[i].cantidad)
+        }
+      }
+
+      // se crean los graficos en este punto para evitar un problema con los valores obtenidos desde el api
+      Chart.defaults.global.defaultFontColor = 'white'
+      this.claro = new Chart('claro', {
+        type: 'line', // tipo de gráfico (line, bar, radar...)
+        data: {
+          labels: this.data.claro.dias,
+          datasets: [{
+            label: 'Items por Día',
+            data: this.data.claro.valor,
+            backgroundColor: [ // color bajo la curva
+              'rgba(255,255,255, 0.2)'
+            ],
+            borderColor: [ // color de la curva
+              'rgba(255,255,255,1)'
+            ],
+            borderWidth: 2
+          }]
+        },
+        options: {
+          title: {
+            text: 'Items creados desde el 1er día del mes anterior hasta hoy',
+            display: true
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      })
+      this.entel = new Chart('entel', {
+        type: 'line', // tipo de gráfico (line, bar, radar...)
+        data: {
+          labels: this.data.entel.dias,
+          datasets: [{
+            label: 'Items por Día',
+            data: this.data.entel.valor,
+            backgroundColor: [ // color bajo la curva
+              'rgba(255,255,255, 0.2)'
+            ],
+            borderColor: [ // color de la curva
+              'rgba(255,255,255,1)'
+            ],
+            borderWidth: 2
+          }]
+        },
+        options: {
+          title: {
+            text: 'Items creados desde el 1er día del mes anterior hasta hoy',
+            display: true
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      })
+    })
+    .catch(err => {
+      console.log('Error:', err)
+    })
+    if(empresa == 'claro'){
+      this.data.claro.dias.pop()
+    }else if(empresa == 'entel'){
+      this.data.entel.dias.pop()
     }
-    let fechaActual = this.fechaActual
-    for(var i=0; i<this.cantidadDiasMesAnterior(); i++){
-      dias.dias.push(i)
-      this.api.getTotalFormsByDate(empresa, this.primerDiaMesAnterior().add(i, 'days').format('YYYY-MM-DD'),this.primerDiaMesAnterior().add(i + 1, 'days').format('YYYY-MM-DD'))
-      .then((res:any) => {
-        dias.valor.push(res.data.total)
-      })
-      .catch((err) => {
-        i = this.cantidadDiasMesAnterior()
-        console.error('Error: ' + err.message)
-      })
-    }
-    for(var i=0; i<this.cantidadDiasMesActualHastaHoy(); i++){
-      dias.dias.push(i)
-      this.api.getTotalFormsByDate(empresa, this.primerDiaMesAnterior().add(i, 'days').format('YYYY-MM-DD'),this.primerDiaMesAnterior().add(i + 1, 'days').format('YYYY-MM-DD'))
-      .then((res:any) => {
-        dias.valor.push(res.data.total)
-      })
-      .catch((err) => {
-        i = this.cantidadDiasMesAnterior()
-        console.error('Error: ' + err.message)
-      })
-    }
-    return dias
   }
 
   diasTotales(){
@@ -140,5 +148,10 @@ export class ChartsComponent implements OnInit {
   primerDiaMesAnterior(){
     let fecha = moment()
     return fecha.subtract(this.diasTotales() - 1, 'd')
+  }
+
+  primerDiaMesActual(){
+    let fecha = moment()
+    return fecha.subtract(this.cantidadDiasMesActualHastaHoy() - 1, 'd')
   }
 }
