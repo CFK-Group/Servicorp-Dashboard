@@ -47,8 +47,8 @@ export class ApiService {
     return this.api.get(`${this.url}/users/forms`).toPromise()
   }
 
-  getTotalFormsByDate(empresa:string, fechaInicio, fechaFin){ // la fecha debe estar en formato yyyy-mm-dd y el rango es de tipo [)
-    return this.api.get(`${this.url}/formularios/${empresa}/fechas/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`).toPromise()
+  getTotalFormsByDate(empresa:string, data){ // la fecha debe estar en formato yyyy-mm-dd y el rango es de tipo [)
+    return this.api.post(`${this.url}/formularios/${empresa}/${localStorage.getItem('userToken')}`, data).toPromise()
   }
 
   getTotalFormsByUserId(userId){
