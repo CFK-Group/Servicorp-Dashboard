@@ -21,7 +21,7 @@
             <tr *ngFor="let file of files">
               <td>{{file.nombre_archivo | uppercase | slice:0:5}}</td>
               <td>{{file.fecha_creacion | date: 'shortDate'}}</td>
-              <th class="right"><a href="http://servicorp.xpass.cl:3000/zips/{{file.nombre_archivo}}" class="btn green accent-4"><i class="material-icons">archive</i></a></th>
+              <th class="right"><a href="http://genesis.xpass.cl/zips/{{file.nombre_archivo}}" class="btn green accent-4"><i class="material-icons">archive</i></a></th>
             </tr>
           </tbody>
         </table>
