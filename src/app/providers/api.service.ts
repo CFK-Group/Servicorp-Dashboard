@@ -11,7 +11,7 @@ import { User } from "../../app/user"
 */
 @Injectable()
 export class ApiService {
-  url: string = "http://genesis.xpass.cl"
+  url: string = "http://genesis.xpass.cl:3001"
 
   constructor(public api: HttpClient) { }
 
