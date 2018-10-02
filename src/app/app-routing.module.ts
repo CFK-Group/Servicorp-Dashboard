@@ -10,7 +10,7 @@ import { ChartsComponent } from "./pages/charts/charts.component"
 import { ReportesComponent } from "./pages/reportes/reportes.component"
 import { ImagenesComponent } from "./pages/imagenes/imagenes.component"
 
-const routes: Routes = [
+export const AppRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, children: [
       { path: '', component: ChartsComponent },
@@ -27,8 +27,8 @@ const routes: Routes = [
   { path: '**', redirectTo: '/login' }
 ]
 
-@NgModule({	
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
-})
-export class AppRoutingModule { }
+// @NgModule({	
+//   imports: [ RouterModule.forRoot(routes) ],
+//   exports: [ RouterModule, {useHash: true} ]
+// })
+// export class AppRoutingModule { }
