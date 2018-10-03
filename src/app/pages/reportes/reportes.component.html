@@ -1,10 +1,6 @@
 <div class="row"></div>
 <div class="row">
-<<<<<<< HEAD
-  <div class="col l6 offset-l3">
-=======
   <div [formGroup]="reportes" class="col l6 offset-l3">
->>>>>>> develop
     <div class="card-panel no-margin light-blue darken-4 title">
       <h5 class="white-text">Generar Reporte</h5>
     </div>
@@ -55,8 +51,7 @@
         </div>
       </div>
       <div class="center">
-        <a class="btn light-blue darken-4" (click)="prueba()" *ngIf="reportes.value.categoria != 'Desconexión'">Descargar</a>
-        <a class="btn light-blue darken-4" href="http://servicorp.xpass.cl:3000/reporte-claro-desconexion.xlsx" *ngIf="reportes.value.categoria == 'Desconexión'">Descargar</a>
+        <a class="btn light-blue darken-4" (click)="prueba()">Descargar</a>
       </div>
     </div>
   </div>

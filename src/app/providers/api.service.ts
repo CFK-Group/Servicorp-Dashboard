@@ -11,14 +11,15 @@ import { User } from "../../app/user"
 */
 @Injectable()
 export class ApiService {
-  url: string = "http://servicorp.xpass.cl:3000"
+  //url: string = "http://genesis.xpass.cl:3001"
+  url: string = "http://localhost:3001"
 
   constructor(public api: HttpClient) { }
 
   getZips(){
     return this.api.get(`${this.url}/zips-imgs/${localStorage.getItem('userToken')}`).toPromise()
   }
-  
+
   login(user: User){
     return this.api.post<User>(`${this.url}/login`, user).toPromise()
   }

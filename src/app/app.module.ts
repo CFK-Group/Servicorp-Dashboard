@@ -8,7 +8,7 @@ import { LoginComponent } from './pages/login/login.component'
 import { DashboardComponent } from './pages/dashboard/dashboard.component'
 import { FooterComponent } from './components/footer/footer.component'
 import { ListadoDeUsuariosComponent } from './pages/listado-de-usuarios/listado-de-usuarios.component'
-import { AppRoutingModule } from './app-routing.module'
+// import { AppRoutingModule } from './app-routing.module'
 import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.component'
 import { NotFoundComponent } from "./pages/not-found/not-found.component"
 import { LoadingModule } from 'ngx-loading'
@@ -18,6 +18,8 @@ import { ChartsComponent } from './pages/charts/charts.component'
 import { ListadoFormulariosComponent } from './pages/listado-formularios/listado-formularios.component'
 import { ReportesComponent } from './pages/reportes/reportes.component'
 import { ImagenesComponent } from './pages/imagenes/imagenes.component'
+import {RouterModule } from '@angular/router'
+import { AppRoutes } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -40,8 +42,9 @@ import { ImagenesComponent } from './pages/imagenes/imagenes.component'
     MaterializeModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    LoadingModule
+    // AppRoutingModule,
+    LoadingModule,
+    RouterModule.forRoot(AppRoutes, {useHash: true})
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
