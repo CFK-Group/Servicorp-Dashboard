@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from "@angular/forms"
 import { ApiService } from "../../providers/api.service"
+import * as moment from 'moment'
+import saveAs from 'file-saver'
 
 @Component({
   selector: 'app-reportes',
@@ -16,18 +18,12 @@ export class ReportesComponent implements OnInit {
   
   ngOnInit() {
     this.reportes = this.createReportesForm()
-    if(this.reportes.value.empresa == 'Claro'){
-      this.reportes.value.categorias = ['Instalación HFC', 'Instalación DTH', 'Mantención HFC', 'Mantención DTH', 'Desconexión']
-    }else if(this.reportes.value.empresa == 'Entel'){
-      this.reportes.value.categorias = ['Instalación DTH']
-    }
-    this.categorias = this.reportes.value.categorias
   }
 
   private createReportesForm(){
     return this.formBuilder.group({
-      fechaInicio: null,
-      fechaFin: null,
+      fechaInicio: moment(),
+      fechaFin: moment(),
       empresa: '',
       categoria: ''
     })
@@ -36,14 +32,23 @@ export class ReportesComponent implements OnInit {
     console.log('Reportes solicitados:', {empresa: this.reportes.value.empresa, tipoFormulario: this.reportes.value.categoria})
     for(let i=0; i<this.reportes.value.categoria.length; i++){
       console.log(this.reportes.value.categoria[i])
-      this.api.getReporte(this.reportes.value.categoria[i], this.reportes.value.empresa, this.reportes.value.fechaInicio, this.reportes.value.fechaFin)
+      this.api.getReporte(this.reportes.value.categoria[i], this.reportes.value.empresa, this.reportes.value.fechaInicio.format('DD-MM-YYYY'), this.reportes.value.fechaFin.format('DD-MM-YYYY'))
       .then((res:any) => {
-
+        this.guardarReporte(res)
+        console.log(res)
       })
       .catch(err => {
         console.log('Error:',`error al pedir reporte de ${this.reportes.value.categoria[i]} de ${this.reportes.value.empresa}.`)
-        console.log(err.message)
+        console.log(err)
       })
     }
+  }
+ 
+  private guardarReporte(res) {
+    const contentDispositionHeader: string = res.headers.get('Content-Disposition')
+    const parts: string[] = contentDispositionHeader.split('')
+    const filename = parts[1].split('=')[1]
+    const blob = new Blob([res._body], { type: 'text/plain' })
+    saveAs(blob, filename)
   }
 }

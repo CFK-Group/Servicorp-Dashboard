@@ -36,17 +36,17 @@
         <div class="input-field col s12 l6" *ngIf="reportes.value.empresa == 'Claro'">
           <h6><strong>Categoría: </strong></h6>
           <select formControlName="categoria" materialize="material_select" class="white" multiple>
-            <option value="instalacion-hfc">Instalación HFC</option>
-            <option value="instalacion-dth">Instalación DTH</option>
-            <option value="mantencion-hfc">Mantención HFC</option>
-            <option value="mantencion-dth">Mantención DTH</option>
+            <option disabled>Seleccionar</option>
+            <option value="instalacion">Instalación</option>
+            <option value="mantencion">Mantención</option>
             <option value="desconexion">Desconexión</option>
           </select>
         </div>
         <div class="input-field col s12 l6" *ngIf="reportes.value.empresa == 'Entel'">
           <h6><strong>Categoría: </strong></h6>
           <select formControlName="categoria" materialize="material_select" class="white" multiple>
-            <option value="instalacion-hfc">Instalación DTH</option>
+            <option disabled>Seleccionar</option>
+            <option value="instalacion">Instalación</option>
           </select>
         </div>
       </div>

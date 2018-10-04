@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http'
+import { Headers } from '@angular/http'
 import { Injectable } from '@angular/core'
 import { User } from "../../app/user"
 //import "rxjs/Rx"
@@ -11,7 +12,7 @@ import { User } from "../../app/user"
 */
 @Injectable()
 export class ApiService {
-  //url: string = "http://genesis.xpass.cl:3001"
+  // url: string = "http://genesis.xpass.cl:3001"
   url: string = "http://localhost:3001"
 
   constructor(public api: HttpClient) { }
@@ -56,8 +57,10 @@ export class ApiService {
     return this.api.get(`${this.url}/formularios/${userId}/${localStorage.getItem('userToken')}`).toPromise()
   }
 
-  getReporte(tipoFormulario:string, empresa:string, fechaInicio:string, fechaFin:string){
-    return this.api.get(`${this.url}/reporte/${tipoFormulario}/${empresa}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`).toPromise()
+  getReporte(tipoFormulario:string, empresa:string, fechaInicio, fechaFin){
+    const headers = new Headers()
+    headers.append('Content-Type', 'application/vnd.ms-excel')
+    return this.api.get(`${this.url}/reporte/${tipoFormulario}/${empresa}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`, { headers: headers }).toPromise()
   }
 
 }
