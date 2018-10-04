@@ -58,9 +58,10 @@ export class ApiService {
   }
 
   getReporte(tipoFormulario:string, empresa:string, fechaInicio, fechaFin){
-    const headers = new Headers()
-    headers.append('Content-Type', 'application/vnd.ms-excel')
-    return this.api.get(`${this.url}/reporte/${tipoFormulario}/${empresa}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`, { headers: headers }).toPromise()
+    //const headers = new Headers()
+    //headers.append('Content-Type', 'application/vnd.ms-excel')
+    // return this.api.get(`${this.url}/reporte/${tipoFormulario}/${empresa}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`, { headers: headers }).toPromise()
+    return this.api.get(`${this.url}/reporte/${tipoFormulario}/${empresa}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`).toPromise()
   }
 
 }
