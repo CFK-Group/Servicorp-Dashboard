@@ -33,14 +33,18 @@ export class ReportesComponent implements OnInit {
     for(let i=0; i<this.reportes.value.categoria.length; i++){
       console.log(this.reportes.value.categoria[i])
       this.api.getReporte(this.reportes.value.categoria[i], this.reportes.value.empresa, this.reportes.value.fechaInicio.format('DD-MM-YYYY'), this.reportes.value.fechaFin.format('DD-MM-YYYY'))
-      .then((res:any) => {
-        this.guardarReporte(res)
-        console.log(res)
-      })
-      .catch(err => {
-        console.log('Error:',`error al pedir reporte de ${this.reportes.value.categoria[i]} de ${this.reportes.value.empresa}.`)
-        console.log(err)
-      })
+      // .then((res:any) => {
+      //   this.guardarReporte(res)
+      //   console.log(res)
+      // })
+      // .catch(err => {
+      //   console.log('Error:',`error al pedir reporte de ${this.reportes.value.categoria[i]} de ${this.reportes.value.empresa}.`)
+      //   console.log(err)
+      // })
+      .subscribe(
+        data => saveAs(data),
+        error => console.log(error.message)
+      )
     }
   }
  

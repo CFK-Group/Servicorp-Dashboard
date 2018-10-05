@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http'
-import { Headers } from '@angular/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { User } from "../../app/user"
-//import "rxjs/Rx"
+import "rxjs/Rx"
+import { Observable } from "rxjs"
 
 /*
   Generated class for the Api service.
@@ -60,8 +60,6 @@ export class ApiService {
   getReporte(tipoFormulario:string, empresa:string, fechaInicio, fechaFin){
     //const headers = new Headers()
     //headers.append('Content-Type', 'application/vnd.ms-excel')
-    // return this.api.get(`${this.url}/reporte/${tipoFormulario}/${empresa}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`, { headers: headers }).toPromise()
-    return this.api.get(`${this.url}/reporte/${tipoFormulario}/${empresa}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`).toPromise()
+    return this.api.get(`${this.url}/reporte/${tipoFormulario}/${empresa}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`, {responseType: 'blob', headers: new HttpHeaders().append('Content-Type', 'application/json') })
   }
-
 }
