@@ -1391,7 +1391,7 @@ NotFoundComponent = __decorate([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".title {\r\n    padding: 1px 24px;\r\n    border-radius: 0 0 2px 2px;\r\n}\r\n.picker__date-display {\r\n    background-color: #01579b !important;\r\n}"
+module.exports = ".title {\r\n    padding: 1px 24px;\r\n    border-radius: 0 0 2px 2px;\r\n}\r\n.picker__date-display {\r\n    background-color: #01579b !important;\r\n}\r\n.dropdown-content{\r\n    width: 120% !important;\r\n}"
 
 /***/ }),
 
@@ -1402,7 +1402,7 @@ module.exports = ".title {\r\n    padding: 1px 24px;\r\n    border-radius: 0 0 2
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\"></div>\r\n<div class=\"row\">\r\n  <div [formGroup]=\"reportes\" class=\"col l6 offset-l3\">\r\n    <div class=\"card-panel no-margin light-blue darken-4 title\">\r\n      <h5 class=\"white-text\">Generar Reporte</h5>\r\n    </div>\r\n    <div class=\"card-panel no-margin\">\r\n      <div class=\"row\">\r\n        <div class=\"input-field col l12\">\r\n          <h6><strong>Rango de Fecha</strong></h6>\r\n        </div>\r\n        <div class=\"col s12 l6\">\r\n          <label>Inicio</label>\r\n          <input  formControlName=\"fechaInicio\" type=\"text\" class=\"datepicker\" materialize=\"pickadate\" [materializeParams]=\"[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]\">\r\n        </div>\r\n        <div class=\"col s12 l6\">\r\n          <label>Fin</label>\r\n          <input  formControlName=\"fechaFin\" type=\"text\" class=\"datepicker\" materialize=\"pickadate\" [materializeParams]=\"[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"input-field col s12 l6\">\r\n          <h6><strong>Empresa: </strong></h6>\r\n          <select formControlName=\"empresa\" materialize=\"material_select\" class=\"white\">\r\n            <option disabled>Seleccionar</option>\r\n            <option value=\"Claro\">Claro</option>\r\n            <option value=\"Entel\">Entel</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"input-field col s12 l6\" *ngIf=\"reportes.value.empresa == ''\">\r\n          <h6><strong>Categoría: </strong></h6>\r\n          <select formControlName=\"categoria\" materialize=\"material_select\" class=\"white\">\r\n            <option value=\"\" disabled>Seleccione empresa</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"input-field col s12 l6\" *ngIf=\"reportes.value.empresa == 'Claro'\">\r\n          <h6><strong>Categoría: </strong></h6>\r\n          <select formControlName=\"categoria\" materialize=\"material_select\" class=\"white\" multiple>\r\n            <option value=\"Instalación HFC\">Instalación HFC</option>\r\n            <option value=\"Instalación DTH\">Instalación DTH</option>\r\n            <option value=\"Mantención HFC\">Mantención HFC</option>\r\n            <option value=\"Mantención DTH\">Mantención DTH</option>\r\n            <option value=\"Desconexión\">Desconexión</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"input-field col s12 l6\" *ngIf=\"reportes.value.empresa == 'Entel'\">\r\n          <h6><strong>Categoría: </strong></h6>\r\n          <select formControlName=\"categoria\" materialize=\"material_select\" class=\"white\" multiple>\r\n            <option value=\"Instalación DTH\">Instalación DTH</option>\r\n          </select>\r\n        </div>\r\n      </div>\r\n      <div class=\"center\">\r\n        <a class=\"btn light-blue darken-4\" (click)=\"prueba()\" *ngIf=\"reportes.value.categoria != 'Desconexión'\">Descargar</a>\r\n        <a class=\"btn light-blue darken-4\" href=\"http://genesis.xpass.cl:3001/reporte-claro-desconexion.xlsx\" *ngIf=\"reportes.value.categoria == 'Desconexión'\">Descargar</a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"row\"></div>\r\n<div class=\"row\">\r\n  <div [formGroup]=\"reportes\" class=\"col l6 offset-l3\">\r\n    <div class=\"card-panel no-margin light-blue darken-4 title\">\r\n      <h5 class=\"white-text\">Generar Reporte</h5>\r\n    </div>\r\n    <div class=\"card-panel no-margin\">\r\n      <div class=\"row\">\r\n        <div class=\"input-field col l12\">\r\n          <h6><strong>Rango de Fecha</strong></h6>\r\n        </div>\r\n        <div class=\"col s12 l6\">\r\n          <label>Inicio</label>\r\n          <input  formControlName=\"fechaInicio\" type=\"text\" class=\"datepicker\" materialize=\"pickadate\" [materializeParams]=\"[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]\">\r\n        </div>\r\n        <div class=\"col s12 l6\">\r\n          <label>Fin</label>\r\n          <input  formControlName=\"fechaFin\" type=\"text\" class=\"datepicker\" materialize=\"pickadate\" [materializeParams]=\"[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"input-field col s12 l6\">\r\n          <h6><strong>Empresa: </strong></h6>\r\n          <select formControlName=\"empresa\" materialize=\"material_select\" class=\"white\">\r\n            <option disabled>Seleccionar</option>\r\n            <option value=\"Claro\">Claro</option>\r\n            <option value=\"Entel\">Entel</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"input-field col s12 l6\" *ngIf=\"reportes.value.empresa == ''\">\r\n          <h6><strong>Categoría: </strong></h6>\r\n          <select formControlName=\"categoria\" materialize=\"material_select\" class=\"white\">\r\n            <option value=\"\" disabled>Seleccione empresa</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"input-field col s12 l6\" *ngIf=\"reportes.value.empresa == 'Claro'\">\r\n          <h6><strong>Categoría: </strong></h6>\r\n          <select formControlName=\"categoria\" materialize=\"material_select\" class=\"white\" multiple>\r\n            <option disabled>Seleccionar</option>\r\n            <option value=\"instalacion\">Instalación</option>\r\n            <option value=\"mantencion\">Mantención</option>\r\n            <option value=\"desconexion\">Desconexión</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"input-field col s12 l6\" *ngIf=\"reportes.value.empresa == 'Entel'\">\r\n          <h6><strong>Categoría: </strong></h6>\r\n          <select formControlName=\"categoria\" materialize=\"material_select\" class=\"white\" multiple>\r\n            <option disabled>Seleccionar</option>\r\n            <option value=\"instalacion\">Instalación</option>\r\n          </select>\r\n        </div>\r\n      </div>\r\n      <div class=\"center\">\r\n        <a class=\"btn light-blue darken-4\" (click)=\"getReporte()\">Descargar</a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1418,6 +1418,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportesComponent", function() { return ReportesComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _providers_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../providers/api.service */ "./src/app/providers/api.service.ts");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var file_saver__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! file-saver */ "./node_modules/file-saver/src/FileSaver.js");
+/* harmony import */ var file_saver__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(file_saver__WEBPACK_IMPORTED_MODULE_4__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1429,37 +1434,40 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
+
+
 let ReportesComponent = class ReportesComponent {
-    constructor(formBuilder) {
+    constructor(formBuilder, api) {
         this.formBuilder = formBuilder;
+        this.api = api;
     }
     ngOnInit() {
         this.reportes = this.createReportesForm();
-        if (this.reportes.value.empresa == 'Claro') {
-            this.reportes.value.categorias = ['Instalación HFC', 'Instalación DTH', 'Mantención HFC', 'Mantención DTH', 'Desconexión'];
-        }
-        else if (this.reportes.value.empresa == 'Entel') {
-            this.reportes.value.categorias = ['Instalación DTH'];
-        }
-        this.categorias = this.reportes.value.categorias;
     }
     createReportesForm() {
         return this.formBuilder.group({
-            fechaInicio: null,
-            fechaFin: null,
+            fechaInicio: moment__WEBPACK_IMPORTED_MODULE_3__(),
+            fechaFin: moment__WEBPACK_IMPORTED_MODULE_3__(),
             empresa: '',
             categoria: ''
         });
     }
-    prueba() {
-        if (this.reportes.value.empresa == 'Claro') {
-            this.reportes.value.categorias = ['Instalación HFC', 'Instalación DTH', 'Mantención HFC', 'Mantención DTH', 'Desconexión'];
+    getReporte() {
+        let reporteName = 'reporte';
+        console.log('Reportes solicitados:', { empresa: this.reportes.value.empresa, tipoFormulario: this.reportes.value.categoria });
+        for (let i = 0; i < this.reportes.value.categoria.length; i++) {
+            console.log(this.reportes.value.categoria[i]);
+            this.api.getReporte(this.reportes.value.categoria[i], this.reportes.value.empresa, this.reportes.value.fechaInicio.format('DD-MM-YYYY'), this.reportes.value.fechaFin.format('DD-MM-YYYY'))
+                .subscribe(data => file_saver__WEBPACK_IMPORTED_MODULE_4___default()(data, `${reporteName + '-' + this.reportes.value.categoria[i]}-${this.reportes.value.empresa}`), error => console.log(error.message));
         }
-        else if (this.reportes.value.empresa == 'Entel') {
-            this.reportes.value.categorias = ['Instalación DTH'];
-        }
-        this.categorias = this.reportes.value.categorias;
-        console.log(this.categorias);
+    }
+    guardarReporte(res) {
+        const contentDispositionHeader = res.headers.get('Content-Disposition');
+        const parts = contentDispositionHeader.split('');
+        const filename = parts[1].split('=')[1];
+        const blob = new Blob([res._body], { type: 'text/plain' });
+        file_saver__WEBPACK_IMPORTED_MODULE_4___default()(blob, filename);
     }
 };
 ReportesComponent = __decorate([
@@ -1468,7 +1476,7 @@ ReportesComponent = __decorate([
         template: __webpack_require__(/*! ./reportes.component.html */ "./src/app/pages/reportes/reportes.component.html"),
         styles: [__webpack_require__(/*! ./reportes.component.css */ "./src/app/pages/reportes/reportes.component.css")]
     }),
-    __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"]])
+    __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"], _providers_api_service__WEBPACK_IMPORTED_MODULE_2__["ApiService"]])
 ], ReportesComponent);
 
 
@@ -1487,6 +1495,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApiService", function() { return ApiService; });
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var rxjs_Rx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/Rx */ "./node_modules/rxjs-compat/_esm2015/Rx.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1498,7 +1507,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-//import "rxjs/Rx"
+
 /*
   Generated class for the Api service.
 
@@ -1508,7 +1517,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 let ApiService = class ApiService {
     constructor(api) {
         this.api = api;
-        this.url = "http://genesis.xpass.cl:3001";
+        // url: string = "http://genesis.xpass.cl:3001"
+        this.url = "http://localhost:3001";
     }
     getZips() {
         return this.api.get(`${this.url}/zips-imgs/${localStorage.getItem('userToken')}`).toPromise();
@@ -1541,6 +1551,11 @@ let ApiService = class ApiService {
     }
     getTotalFormsByUserId(userId) {
         return this.api.get(`${this.url}/formularios/${userId}/${localStorage.getItem('userToken')}`).toPromise();
+    }
+    getReporte(tipoFormulario, empresa, fechaInicio, fechaFin) {
+        //const headers = new Headers()
+        //headers.append('Content-Type', 'application/vnd.ms-excel')
+        return this.api.get(`${this.url}/reporte/${tipoFormulario}/${empresa}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`, { responseType: 'blob', headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpHeaders"]().append('Content-Type', 'application/json') });
     }
 };
 ApiService = __decorate([
