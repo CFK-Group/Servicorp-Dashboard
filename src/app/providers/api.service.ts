@@ -12,8 +12,8 @@ import { Observable } from "rxjs"
 */
 @Injectable()
 export class ApiService {
-  // url: string = "http://genesis.xpass.cl:3001"
-  url: string = "http://localhost:3001"
+  url: string = "http://genesis.xpass.cl:3001"
+  // url: string = "http://localhost:3001"
 
   constructor(public api: HttpClient) { }
 
