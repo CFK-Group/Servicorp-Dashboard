@@ -1,4 +1,4 @@
-<div id="login-body" class="valign-wrapper light-blue darken-4">
+<div id="login-body" class="valign-wrapper servicorp-primary-color">
     <div class="row center">
         <form class="card-panel hoverable animated" materialize [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="row center no-margin">
@@ -19,7 +19,7 @@
         </div>
         <div class="row"></div>
         <div class="row">
-            <button type="submit" class="btn light-blue darken-4 col s12" value="Entrar" [disabled]="!loginForm.valid">Entrar</button>
+            <button type="submit" class="btn servicorp-primary-color col s12" value="Entrar" [disabled]="!loginForm.valid">Entrar</button>
         </div>
     </form>
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
