@@ -23,10 +23,10 @@ export class ReportesComponent implements OnInit {
 
   private createReportesForm(){
     return this.formBuilder.group({
-      fechaInicio: moment(),
-      fechaFin: moment(),
-      empresa: '',
-      categoria: ''
+      fechaInicio: [moment(), Validators.required],
+      fechaFin: [moment(), Validators.required],
+      empresa: ['', Validators.required],
+      categoria: ['', Validators.required]
     })
   }
   getReporte(){

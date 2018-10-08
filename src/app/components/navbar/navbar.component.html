@@ -7,7 +7,7 @@
         <li><a routerLink="/dashboard">Dashboard</a></li>
         <li><a materialize="dropdown" class="dropdown-button" data-activates="reportes" data-hover="true" data-beloworigin="true">Reportes<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><a materialize="dropdown" class="dropdown-button" data-activates="usuarios" data-hover="true" data-beloworigin="true">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a (click)="logout()" routerLink="/login"><i class="material-icons">exit_to_app</i></a></li>
+        <li><a (click)="logout()"><i class="material-icons">exit_to_app</i></a></li>
       </ul>
     </div>
   </nav>
@@ -15,7 +15,7 @@
 
 <ul id="usuarios" class="dropdown-content">
   <li><a class="light-blue-text text-darken-4" routerLink="/dashboard/usuarios">Ver Usuarios</a></li>
-  <li *ngIf="getUsername() == 'test' || getUsername() == 'test2'"><a class="light-blue-text text-darken-4" routerLink="/dashboard/crear-usuario">Crear Usuario</a></li>
+  <li *ngIf="getUserType() === 'superadmin'"><a class="light-blue-text text-darken-4" routerLink="/dashboard/crear-usuario">Crear Usuario</a></li>
 </ul>
 
 <ul id="reportes" class="dropdown-content">

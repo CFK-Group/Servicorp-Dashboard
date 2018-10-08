@@ -63,4 +63,8 @@ export class ApiService {
     //headers.append('Content-Type', 'application/vnd.ms-excel')
     return this.api.get(`${this.url}/reporte/${tipoFormulario}/${empresa}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`, {responseType: 'blob', headers: new HttpHeaders().append('Content-Type', 'application/json') })
   }
+
+  createUser(data){
+    return this.api.post(`${this.url}/new/user/${localStorage.getItem('userToken')}`, data).toPromise()
+  }
 }

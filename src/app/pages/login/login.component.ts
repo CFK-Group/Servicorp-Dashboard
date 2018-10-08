@@ -5,6 +5,7 @@ import { ApiService } from "../../providers/api.service"
 import { User } from '../../../app/user'
 import { environment } from '../../../environments/environment'
 import { toast } from 'angular2-materialize'
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, public formBuilder: FormBuilder, private api: ApiService) {
     this.loginForm = this.createLoginForm()
-    if(localStorage.getItem('userToken')){
+    if(localStorage.getItem('userToken') && localStorage.getItem('lastLogin') == moment().format('DD-MM-YYYY')){
       this.router.navigate(['/dashboard'])
     }
   }
@@ -54,6 +55,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userToken', res.token)
         localStorage.setItem('userId', res.id_usuario)
         localStorage.setItem('username', this.loginForm.value.username)
+        localStorage.setItem('userType', res.typeUser)
+        localStorage.setItem('lastLogin', moment().format('DD-MM-YYYY'))
         this.router.navigate(['/dashboard'])
         toast('Sesión Iniciada',3000)
       }else{
