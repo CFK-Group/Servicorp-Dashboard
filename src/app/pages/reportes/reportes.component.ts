@@ -33,8 +33,6 @@ export class ReportesComponent implements OnInit {
     let reporteName = 'reporte'
     console.log('Reportes solicitados:', {empresa: this.reportes.value.empresa, tipoFormulario: this.reportes.value.categoria})
     for(let i=0; i<this.reportes.value.categoria.length; i++){
-      console.log(this.reportes.value)
-      console.log(moment(this.reportes.value.fechaInicio).format('DD-MM-YYYY'))
       this.api.getReporte(this.reportes.value.categoria[i], this.reportes.value.empresa, moment(this.reportes.value.fechaInicio).format('YYYY-MM-DD'), moment(this.reportes.value.fechaFin).add(23, 'hours').add(59, 'minutes').format('YYYY-MM-DD HH:mm'))
       .subscribe(
         data => {
