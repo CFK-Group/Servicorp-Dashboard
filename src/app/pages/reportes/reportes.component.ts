@@ -14,9 +14,9 @@ export class ReportesComponent implements OnInit {
 
   reportes: FormGroup
   categorias
-  
+
   constructor(public formBuilder: FormBuilder, private api: ApiService) { }
-  
+
   ngOnInit() {
     this.reportes = this.createReportesForm()
   }
@@ -33,8 +33,9 @@ export class ReportesComponent implements OnInit {
     let reporteName = 'reporte'
     console.log('Reportes solicitados:', {empresa: this.reportes.value.empresa, tipoFormulario: this.reportes.value.categoria})
     for(let i=0; i<this.reportes.value.categoria.length; i++){
-      console.log(this.reportes.value.categoria[i])
-      this.api.getReporte(this.reportes.value.categoria[i], this.reportes.value.empresa, moment(this.reportes.value.fechaInicio).format('DD-MM-YYYY'), moment(this.reportes.value.fechaFin).format('DD-MM-YYYY'))
+      console.log(this.reportes.value)
+      console.log(moment(this.reportes.value.fechaInicio).format('DD-MM-YYYY'))
+      this.api.getReporte(this.reportes.value.categoria[i], this.reportes.value.empresa, moment(this.reportes.value.fechaInicio).format('YYYY-MM-DD'), moment(this.reportes.value.fechaFin).add(23, 'hours').add(59, 'minutes').format('YYYY-MM-DD HH:mm'))
       .subscribe(
         data => {
           saveAs(data, `${reporteName + '-' + this.reportes.value.categoria[i]}-${this.reportes.value.empresa}`)
@@ -44,7 +45,7 @@ export class ReportesComponent implements OnInit {
       )
     }
   }
- 
+
   private guardarReporte(res) {
     const contentDispositionHeader: string = res.headers.get('Content-Disposition')
     const parts: string[] = contentDispositionHeader.split('')
