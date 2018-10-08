@@ -3,8 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
-};
+  production: false,
+  apiUrl: "http://localhost:3001",
+  username: 'test',
+  password: 'test'
+}
 
 /*
  * In development mode, to ignore zone related error stack frames such as

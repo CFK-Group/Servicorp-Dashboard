@@ -20,14 +20,16 @@
           </thead>
           <tbody>
             <tr *ngFor="let user of users">
-              <td routerLink="/dashboard/18/reportes">{{user.nombre}}</td>
+              <td>{{user.nombre}}</td>
+              <!-- <td routerLink="/dashboard/18/reportes">{{user.nombre}}</td> -->
               <td>{{user.cantidad.instalacionHfc}}</td>
               <td>{{user.cantidad.instalacionDth}}</td>
               <td>{{user.cantidad.mantencionHfc}}</td>
               <td>{{user.cantidad.mantencionDth}}</td>
               <td>{{user.cantidad.desconexion}}</td>
               <td>{{user.cantidad.instalacionDthEntel}}</td>
-              <td routerLink="/dashboard/18/reportes">{{user.cantidad.total}}</td>
+              <td>{{user.cantidad.total}}</td>
+              <!-- <td routerLink="/dashboard/18/reportes">{{user.cantidad.total}}</td> -->
             </tr>
           </tbody>
         </table>

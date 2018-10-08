@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms"
 import { ApiService } from "../../providers/api.service"
 import * as moment from 'moment'
 import saveAs from 'file-saver'
+import { toast } from 'angular2-materialize'
 
 @Component({
   selector: 'app-reportes',
@@ -33,10 +34,13 @@ export class ReportesComponent implements OnInit {
     console.log('Reportes solicitados:', {empresa: this.reportes.value.empresa, tipoFormulario: this.reportes.value.categoria})
     for(let i=0; i<this.reportes.value.categoria.length; i++){
       console.log(this.reportes.value.categoria[i])
-      this.api.getReporte(this.reportes.value.categoria[i], this.reportes.value.empresa, this.reportes.value.fechaInicio.format('DD-MM-YYYY'), this.reportes.value.fechaFin.format('DD-MM-YYYY'))
+      this.api.getReporte(this.reportes.value.categoria[i], this.reportes.value.empresa, moment(this.reportes.value.fechaInicio).format('DD-MM-YYYY'), moment(this.reportes.value.fechaFin).format('DD-MM-YYYY'))
       .subscribe(
-        data => saveAs(data, `${reporteName + '-' + this.reportes.value.categoria[i]}-${this.reportes.value.empresa}`),
-        error => console.log(error.message)
+        data => {
+          saveAs(data, `${reporteName + '-' + this.reportes.value.categoria[i]}-${this.reportes.value.empresa}`)
+          toast('Descargando reporte',3000)
+        },
+        error => toast('No hay reportes en la fecha seleccionada',3000)
       )
     }
   }

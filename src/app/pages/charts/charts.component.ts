@@ -41,6 +41,69 @@ export class ChartsComponent implements OnInit {
     }
     this.totalFormsByDate('claro')
     this.totalFormsByDate('entel')
+
+    // Carga anticipada de los gráficos sin valores, para evitar bug
+    Chart.defaults.global.defaultFontColor = 'white'
+    this.claro = new Chart('claro', {
+      type: 'line', // tipo de gráfico (line, bar, radar...)
+      data: {
+        labels: this.data.claro.dias,
+        datasets: [{
+          label: 'Items por Día',
+          data: [],
+          backgroundColor: [ // color bajo la curva
+            'rgba(255,255,255, 0.2)'
+          ],
+          borderColor: [ // color de la curva
+            'rgba(255,255,255,1)'
+          ],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        title: {
+          text: 'Items creados desde el 1er día del mes anterior hasta hoy',
+          display: true
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    })
+    this.entel = new Chart('entel', {
+      type: 'line', // tipo de gráfico (line, bar, radar...)
+      data: {
+        labels: this.data.entel.dias,
+        datasets: [{
+          label: 'Items por Día',
+          data: [],
+          backgroundColor: [ // color bajo la curva
+            'rgba(255,255,255, 0.2)'
+          ],
+          borderColor: [ // color de la curva
+            'rgba(255,255,255,1)'
+          ],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        title: {
+          text: 'Items creados desde el 1er día del mes anterior hasta hoy',
+          display: true
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    })
   }
 
   cantidadDiasMesAnterior(){
@@ -68,7 +131,7 @@ export class ChartsComponent implements OnInit {
         }
       }
 
-      // se crean los graficos en este punto para evitar un problema con los valores obtenidos desde el api
+      // se crean nuevamente los graficos en este punto para evitar un problema con los valores obtenidos desde el api
       Chart.defaults.global.defaultFontColor = 'white'
       this.claro = new Chart('claro', {
         type: 'line', // tipo de gráfico (line, bar, radar...)

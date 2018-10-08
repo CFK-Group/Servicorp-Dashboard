@@ -15,7 +15,7 @@
 
 <ul id="usuarios" class="dropdown-content">
   <li><a class="light-blue-text text-darken-4" routerLink="/dashboard/usuarios">Ver Usuarios</a></li>
-  <li><a class="light-blue-text text-darken-4" routerLink="/dashboard/crear-usuario">Crear Usuario</a></li>
+  <li *ngIf="getUsername() == 'test' || getUsername() == 'test2'"><a class="light-blue-text text-darken-4" routerLink="/dashboard/crear-usuario">Crear Usuario</a></li>
 </ul>
 
 <ul id="reportes" class="dropdown-content">

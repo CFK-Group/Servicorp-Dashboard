@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core'
 import { User } from "../../app/user"
 import "rxjs/Rx"
 import { Observable } from "rxjs"
+import { environment } from "../../environments/environment"
 
 /*
   Generated class for the Api service.
@@ -12,10 +13,10 @@ import { Observable } from "rxjs"
 */
 @Injectable()
 export class ApiService {
-  url: string = "http://genesis.xpass.cl:3001"
-  // url: string = "http://localhost:3001"
-
+  
   constructor(public api: HttpClient) { }
+  
+  url = environment.apiUrl
 
   getZips(){
     return this.api.get(`${this.url}/zips-imgs/${localStorage.getItem('userToken')}`).toPromise()

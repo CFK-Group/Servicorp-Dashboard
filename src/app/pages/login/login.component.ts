@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router'
 import { ApiService } from "../../providers/api.service"
 import { User } from '../../../app/user'
+import { environment } from '../../../environments/environment'
+import { toast } from 'angular2-materialize'
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ import { User } from '../../../app/user'
 })
 export class LoginComponent implements OnInit {
 
-  mode: string = 'develop'  // cambiar entre develop y producion según sea el caso
+  mode: string = 'producion'  // cambiar entre develop y producion según sea el caso
   loginForm: FormGroup
   loading = false
 
@@ -27,8 +29,8 @@ export class LoginComponent implements OnInit {
   private createLoginForm(){
     if(this.mode === 'develop'){
       return this.formBuilder.group({
-        username: ['test', Validators.required],
-        password: ['test', Validators.required]
+        username: [environment.username, Validators.required],
+        password: [environment.password, Validators.required]
       })
     }else{
       return this.formBuilder.group({
@@ -53,24 +55,14 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userId', res.id_usuario)
         localStorage.setItem('username', this.loginForm.value.username)
         this.router.navigate(['/dashboard'])
+        toast('Sesión Iniciada',3000)
       }else{
-        // let alert = this.alertCtrl.create({
-        //   title: 'Error al iniciar sesión',
-        //   subTitle: 'nombre de usuario o contraseña incorrectos',
-        //   buttons: ['OK']
-        // })
-        // alert.present()
+        toast('Usuario o contraseña incorrectos',3000)
       }
     })
     .catch( (reason) => {
       console.timeEnd('login')
-      this.loading = false
-      // let alert = this.alertCtrl.create({
-      //   title: 'Error al iniciar sesión.',
-      //   subTitle: 'Por favor revise su conexión a internet.',
-      //   buttons: ['OK']
-      // })
-      // alert.present()
+      toast('Error al iniciar sesión',3000)
     })
   }
 

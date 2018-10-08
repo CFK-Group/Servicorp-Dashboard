@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { ApiService } from "../../providers/api.service"
 
 @Component({
   selector: 'app-crear-usuario',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearUsuarioComponent implements OnInit {
 
-  constructor() { }
+  createUserForm: FormGroup
+
+  constructor(public formBuilder: FormBuilder, private api: ApiService) { 
+    this.createUserForm = this.createCreateUserForm()
+  }
 
   ngOnInit() {
+    
+  }
+
+  private createCreateUserForm(){
+    return this.formBuilder.group({
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      username: ['', Validators.required],
+      contraseña: ['', Validators.required],
+      tipo_usuario: ['', Validators.required],
+      empresa: ['', Validators.required]
+    })
+
   }
 
 }
