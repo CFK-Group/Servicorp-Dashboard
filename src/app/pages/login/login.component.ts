@@ -6,6 +6,7 @@ import { User } from '../../../app/user'
 import { environment } from '../../../environments/environment'
 import { toast } from 'angular2-materialize'
 import * as moment from 'moment'
+import { NgxSpinnerService } from 'ngx-spinner'
 
 @Component({
   selector: 'app-login',
@@ -18,14 +19,15 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup
   loading = false
 
-  constructor(private route: ActivatedRoute, private router: Router, public formBuilder: FormBuilder, private api: ApiService) {
+  constructor(private spinner: NgxSpinnerService, private route: ActivatedRoute, private router: Router, public formBuilder: FormBuilder, private api: ApiService) {
     this.loginForm = this.createLoginForm()
     if(localStorage.getItem('userToken') && localStorage.getItem('lastLogin') == moment().format('DD-MM-YYYY')){
       this.router.navigate(['/dashboard'])
     }
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+  }
 
   private createLoginForm(){
     if(this.mode === 'develop'){
@@ -42,14 +44,14 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.spinner.show()
     console.time('login')
-    this.loading = true
     const user =  new User(this.loginForm.value.username, this.loginForm.value.password)
     console.table(user)
     this.api.login(user)
     .then((res: any) => {
+      this.spinner.hide()
       console.timeEnd('login')
-      this.loading = false
       console.table(res)
       if(res.success === true && (res.typeUser === 'Administrador' || res.typeUser === 'superadmin')){
         localStorage.setItem('userToken', res.token)
@@ -58,14 +60,15 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userType', res.typeUser)
         localStorage.setItem('lastLogin', moment().format('DD-MM-YYYY'))
         this.router.navigate(['/dashboard'])
-        toast('Sesión Iniciada',3000)
+        toast('Sesión Iniciada', 3000)
       }else{
-        toast('Usuario no autorizado',3000)
+        toast('Usuario no autorizado', 3000)
       }
     })
     .catch( (reason) => {
+      this.spinner.hide()
       console.timeEnd('login')
-      toast('Error al iniciar sesión',3000)
+      toast('Error al iniciar sesión', 3000)
     })
   }
 

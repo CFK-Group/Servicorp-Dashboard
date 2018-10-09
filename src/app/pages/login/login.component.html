@@ -1,26 +1,26 @@
 <div id="login-body" class="valign-wrapper servicorp-primary-color">
     <div class="row center">
         <form class="card-panel hoverable animated" materialize [formGroup]="loginForm" (ngSubmit)="login()">
-        <div class="row center no-margin">
-            <i class="fas fa-user-circle fa-7x"></i>
-        </div>
-        <img src="../../../assets/images/servicorp-logo.png" class="responsive-img">
-        <div class="row">
-            <div class="input-field col s12">
-                <input formControlName="username" type="text" class="validate" required="true" autofocus>
-                <label for="username">Username</label>
+            <div class="row center no-margin">
+                <i class="fas fa-user-circle fa-7x"></i>
             </div>
-        </div>
-        <div class="row no-margin">
-            <div class="input-field col s12">
-                <input formControlName="password" type="password" class="validate" required="true">
-                <label for="password">Contraseña</label>
+            <img src="../../../assets/images/servicorp-logo.png" class="responsive-img">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input formControlName="username" type="text" class="validate" required="true" autofocus>
+                    <label for="username">Username</label>
+                </div>
             </div>
-        </div>
-        <div class="row"></div>
-        <div class="row">
-            <button type="submit" class="btn servicorp-primary-color col s12" value="Entrar" [disabled]="!loginForm.valid">Entrar</button>
-        </div>
-    </form>
+            <div class="row no-margin">
+                <div class="input-field col s12">
+                    <input formControlName="password" type="password" class="validate" required="true">
+                    <label for="password">Contraseña</label>
+                </div>
+            </div>
+            <div class="row"></div>
+            <div class="row">
+                <button type="submit" class="btn servicorp-primary-color col s12" value="Entrar" [disabled]="!loginForm.valid">Entrar</button>
+            </div>
+        </form>
     </div>
 </div>

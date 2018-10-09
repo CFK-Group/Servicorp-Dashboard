@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ApiService } from '../../providers/api.service'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-listado-de-usuarios',
@@ -9,11 +10,34 @@ import { ApiService } from '../../providers/api.service'
 export class ListadoDeUsuariosComponent implements OnInit {
 
   users = []
+  filterForm: FormGroup
+  filter = {
+    fechaInicio: '',
+    fechaFin: '',
+    nombre: ''
+  }
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.getFormsQuantity()
+    this.filterForm = this.createFilterForm()
+  }
+
+  setFilters(){
+    this.filter = {
+      fechaInicio: this.filterForm.value.fechaInicio,
+      fechaFin: this.filterForm.value.fechaFin,
+      nombre: this.filterForm.value.nombre
+    }
+  }
+
+  private createFilterForm(){
+    return this.formBuilder.group({
+      fechaInicio: [''],
+      fechaFin: [''],
+      nombre: ['']
+    })
   }
 
   getFormsQuantity(){

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import * as Chart from 'chart.js'
 import { ApiService } from "../../providers/api.service"
+import { NgxSpinnerService } from 'ngx-spinner'
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +9,7 @@ import { ApiService } from "../../providers/api.service"
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private api: ApiService) { }
+  constructor(public spinner: NgxSpinnerService, private api: ApiService) { }
 
   ngOnInit() {
     

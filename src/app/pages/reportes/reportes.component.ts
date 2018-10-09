@@ -37,9 +37,11 @@ export class ReportesComponent implements OnInit {
       .subscribe(
         data => {
           saveAs(data, `${reporteName + '-' + this.reportes.value.categoria[i]}-${this.reportes.value.empresa}`)
-          toast('Descargando reporte',3000)
+          toast('Descargando reporte', 3000)
         },
-        error => toast('No hay reportes en la fecha seleccionada',3000)
+        error => {
+          toast('No hay reportes en la fecha seleccionada', 3000)
+        }
       )
     }
   }
