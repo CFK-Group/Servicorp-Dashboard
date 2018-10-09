@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       console.timeEnd('login')
       this.loading = false
       console.table(res)
-      if(res.success === true){
+      if(res.success === true && (res.typeUser === 'Administrador' || res.typeUser === 'superadmin')){
         localStorage.setItem('userToken', res.token)
         localStorage.setItem('userId', res.id_usuario)
         localStorage.setItem('username', this.loginForm.value.username)
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/dashboard'])
         toast('Sesión Iniciada',3000)
       }else{
-        toast('Usuario o contraseña incorrectos',3000)
+        toast('Usuario no autorizado',3000)
       }
     })
     .catch( (reason) => {
