@@ -7,4 +7,11 @@ import { Component } from '@angular/core'
 })
 export class AppComponent {
   title = 'app'
+  toasty: boolean
+
+  showToasty(){
+    this.toasty = true
+    console.log(this.toasty)
+  }
+
 }

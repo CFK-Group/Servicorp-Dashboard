@@ -67,8 +67,11 @@ input.invalid{
     background: -webkit-linear-gradient(to right, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.servicorp-primary-color{
+.servicorp-primary-color, .picker__date-display, .picker--focused .picker__day--selected, .picker__day--selected, .picker__day--selected:hover{
     background: #1e3c72;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #2a5298, #1e3c72);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #2a5298, #1e3c72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.picker__day.picker__day--today, .picker__clear, .picker__close, .picker__today{
+    color: #1e3c72;
 }

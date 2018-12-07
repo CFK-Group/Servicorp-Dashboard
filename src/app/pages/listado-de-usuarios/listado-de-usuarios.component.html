@@ -19,9 +19,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of users | filter:filter.nombre | filter:filter.fechaInicio | filter:filter.fechaFin">
+            <tr *ngFor="let user of users | filter:filter.nombre">
               <td>{{user.nombre}}</td>
-              <!-- <td routerLink="/dashboard/18/reportes">{{user.nombre}}</td> -->
               <td>{{user.cantidad.instalacionHfc}}</td>
               <td>{{user.cantidad.instalacionDth}}</td>
               <td>{{user.cantidad.mantencionHfc}}</td>
@@ -29,7 +28,6 @@
               <td>{{user.cantidad.desconexion}}</td>
               <td>{{user.cantidad.instalacionDthEntel}}</td>
               <td>{{user.cantidad.total}}</td>
-              <!-- <td routerLink="/dashboard/18/reportes">{{user.cantidad.total}}</td> -->
             </tr>
           </tbody>
         </table>
@@ -43,8 +41,12 @@
           <h5 class="white-text">Filtros</h5>
         </div>
         <div class="card-content">
-          <p class="hide"><strong>Rango de Fecha</strong></p><br>
-          <div class="row hide">
+          <p><strong>Nombre</strong></p>
+          <div class="input-field">
+            <input formControlName="nombre" type="text">
+          </div>
+          <p class=""><strong>Rango de Fecha</strong></p><br>
+          <div class="row ">
             <div class="col s12">
               <label>Inicio</label>
               <input formControlName="fechaInicio" type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
@@ -54,16 +56,12 @@
               <input formControlName="fechaFin" type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
             </div>
           </div>
-          <p><strong>Nombre</strong></p>
-          <div class="input-field">
-            <input formControlName="nombre" type="text">
+          <div class="row center">
+            <a class="btn servicorp-primary-color" (click)="setFilters()">Filtrar</a>
           </div>
         </div>
       </form>
-      <div class="row center">
-        <a class="btn servicorp-primary-color" (click)="setFilters()">Filtrar</a>
-      </div>
-      <div class="row"></div>
+      <div class="row hide"></div>
     </div>
   </div>
 </main>

@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router'
 import { AppRoutes } from './app-routing.module'
 import { Ng2SearchPipeModule } from 'ng2-search-filter'
 import { NgxSpinnerModule } from 'ngx-spinner'
+import { KonamiModule } from 'ngx-konami'
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NgxSpinnerModule } from 'ngx-spinner'
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     RouterModule.forRoot(AppRoutes, {useHash: true}),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    KonamiModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

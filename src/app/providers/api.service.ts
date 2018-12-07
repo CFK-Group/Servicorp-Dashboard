@@ -58,6 +58,10 @@ export class ApiService {
     return this.api.get(`${this.url}/formularios/${userId}/${localStorage.getItem('userToken')}`).toPromise()
   }
 
+  getTotalFormsByUserIdBetweenDate(userId, fechaInicio, fechaFin){
+    return this.api.get(`${this.url}/formularios/${userId}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`).toPromise()
+  }
+
   getReporte(tipoFormulario:string, empresa:string, fechaInicio, fechaFin){
     //const headers = new Headers()
     //headers.append('Content-Type', 'application/vnd.ms-excel')
