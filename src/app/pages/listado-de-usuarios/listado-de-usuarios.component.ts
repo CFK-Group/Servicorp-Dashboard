@@ -33,8 +33,8 @@ export class ListadoDeUsuariosComponent implements OnInit {
     console.log(this.filterForm.value.fechaFin)
     if(this.filterForm.value.fechaInicio != '' && this.filterForm.value.fechaFin != ''){
       this.filter = {
-        fechaInicio: moment(this.filter.fechaInicio).format('YYYY-MM-DD'),
-        fechaFin: moment(this.filter.fechaFin).format('YYYY-MM-DD'),
+        fechaInicio: moment(this.filterForm.value.fechaInicio).format('YYYY-MM-DD'),
+        fechaFin: moment(this.filterForm.value.fechaFin).format('YYYY-MM-DD'),
         nombre: this.filterForm.value.nombre
       }
       this.getFormsQuantityBetweenDate(this.filter.fechaInicio, this.filter.fechaFin)
