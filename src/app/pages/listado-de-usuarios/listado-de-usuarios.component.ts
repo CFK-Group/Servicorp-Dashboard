@@ -59,23 +59,25 @@ export class ListadoDeUsuariosComponent implements OnInit {
     let ids = []
     let cantidades = []
     let nombres = []
+    let empresas = []
     this.api.getUsers()
     .then((res:any) => {
       for(let i=0; i<res.length; i++){
         ids.push(res[i].id)
         nombres.push(res[i].nombre)
+        empresas.push(res[i].empresa)
       }
       for(let i=0; i<ids.length; i++){
         this.api.getTotalFormsByUserId(ids[i])
         .then((res:any) => {
           cantidades = res.data
-          this.users.push({nombre: nombres[i], cantidad: cantidades})
+          this.users.push({nombre: nombres[i], empresa: empresas[i], cantidad: cantidades})
         })
         .catch(err => {
           console.log('Error:', err)
         })
       }
-      console.log(this.users)
+      console.log('users: ',this.users)
     })
     .catch((err) => {
       console.log('Error:', err)
@@ -86,24 +88,26 @@ export class ListadoDeUsuariosComponent implements OnInit {
     let ids = []
     let cantidades = []
     let nombres = []
+    let empresas = []
     this.users = []
     this.api.getUsers()
     .then((res:any) => {
       for(let i=0; i<res.length; i++){
         ids.push(res[i].id)
         nombres.push(res[i].nombre)
+        empresas.push(res[i].empresa)
       }
       for(let i=0; i<ids.length; i++){
         this.api.getTotalFormsByUserIdBetweenDate(ids[i], fechaInicio, fechaFin)
         .then((res:any) => {
           cantidades = res.data
-          this.users.push({nombre: nombres[i], cantidad: cantidades})
+          this.users.push({nombre: nombres[i], empresa: empresas[i], cantidad: cantidades})
         })
         .catch(err => {
           console.log('Error:', err)
         })
+        console.log('users: ',this.users)
       }
-      console.log(this.users)
     })
     .catch((err) => {
       console.log('Error:', err)

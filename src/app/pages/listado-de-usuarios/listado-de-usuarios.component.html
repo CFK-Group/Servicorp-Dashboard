@@ -2,32 +2,57 @@
   <div class="col l10">
     <div class="card">
       <div class="card-content servicorp-primary-color title">
-        <h5 class="white-text ">Listado de Usuarios</h5>
+        <h5 class="white-text ">Listado de Usuarios Claro</h5>
       </div>
       <div class="card-content">
         <table class="striped">
           <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Instalación HFC (Claro)</th>
-                <th>Instalación DTH (Claro)</th>
-                <th>Mantención HFC (Claro)</th>
-                <th>Mantención DTH (Claro)</th>
-                <th>Desconexión (Claro)</th>
-                <th>Mantención DTH (Entel)</th>
-                <th>Total</th>
+              <th>Nombre</th>
+              <th>Instalación HFC</th>
+              <th>Instalación DTH</th>
+              <th>Mantención HFC</th>
+              <th>Mantención DTH</th>
+              <th>Desconexión</th>
+              <th>Total</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let user of users | filter:filter.nombre">
-              <td>{{user.nombre}}</td>
-              <td>{{user.cantidad.instalacionHfc}}</td>
-              <td>{{user.cantidad.instalacionDth}}</td>
-              <td>{{user.cantidad.mantencionHfc}}</td>
-              <td>{{user.cantidad.mantencionDth}}</td>
-              <td>{{user.cantidad.desconexion}}</td>
-              <td>{{user.cantidad.instalacionDthEntel}}</td>
-              <td>{{user.cantidad.total}}</td>
+              <td *ngIf="user.empresa == 'Claro'">{{user.nombre}}</td>
+              <td *ngIf="user.empresa == 'Claro'">{{user.cantidad.instalacionHfc}}</td>
+              <td *ngIf="user.empresa == 'Claro'">{{user.cantidad.instalacionDth}}</td>
+              <td *ngIf="user.empresa == 'Claro'">{{user.cantidad.mantencionHfc}}</td>
+              <td *ngIf="user.empresa == 'Claro'">{{user.cantidad.mantencionDth}}</td>
+              <td *ngIf="user.empresa == 'Claro'">{{user.cantidad.desconexion}}</td>
+              <td *ngIf="user.empresa == 'Claro'">{{user.cantidad.total}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content servicorp-primary-color title">
+        <h5 class="white-text ">Listado de Usuarios Entel</h5>
+      </div>
+      <div class="card-content">
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Instalación DTH</th>
+              <th>BAFI</th>
+              <th>DUO</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users | filter:filter.nombre">
+              <td *ngIf="user.empresa == 'Entel'">{{user.nombre}}</td>
+              <td *ngIf="user.empresa == 'Entel'">{{user.cantidad.instalacionDthEntel}}</td>
+              <td *ngIf="user.empresa == 'Entel'">{{user.cantidad.BAFIEntel}}</td>
+              <td *ngIf="user.empresa == 'Entel'">{{user.cantidad.DUOEntel}}</td>
+              <td *ngIf="user.empresa == 'Entel'">{{user.cantidad.total}}</td>
             </tr>
           </tbody>
         </table>
