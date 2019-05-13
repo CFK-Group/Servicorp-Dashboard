@@ -62,10 +62,10 @@ export class ApiService {
     return this.api.get(`${this.url}/formularios/${userId}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`).toPromise()
   }
 
-  getReporte(tipoFormulario:string, empresa:string, fechaInicio, fechaFin){
+  getReporte(idTipoFormulario:string, empresa:string, fechaInicio, fechaFin){
     //const headers = new Headers()
     //headers.append('Content-Type', 'application/vnd.ms-excel')
-    return this.api.get(`${this.url}/reporte/${tipoFormulario}/${empresa}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`, {responseType: 'blob', headers: new HttpHeaders().append('Content-Type', 'application/json') })
+    return this.api.get(`${this.url}/reporte/${idTipoFormulario}/${fechaInicio}/${fechaFin}/${localStorage.getItem('userToken')}`, {responseType: 'blob', headers: new HttpHeaders().append('Content-Type', 'application/json') })
   }
 
   createUser(data){
