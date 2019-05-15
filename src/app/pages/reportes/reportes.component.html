@@ -11,11 +11,46 @@
         </div>
         <div class="col s12 l6">
           <label>Inicio</label>
-          <input  formControlName="fechaInicio" type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
+          <!-- <input formControlName="fechaInicio" 
+                  type="text" class="datepicker" 
+                  materialize="pickadate"
+                  [materializeParams]="[{
+                    closeOnSelect: false, 
+                    selectMonths: true,
+                    format: 'dd/mm/yyyy', 
+                    firstDay: 1, 
+                    selectYears: 2,
+                    today: 'Hoy',
+                    clear: 'Borrar',
+                    max: 'today',
+                    min: mesAtras,
+                    monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    weekdaysShort: ['Dom', 'Lun', 'Mar', 'Miér', 'Jue', 'Vie', 'Sab'],
+                    weekdaysAbbrev: ['D','L','M','I','J','V','S']
+                  }]">  --> 
+          <input type="date" formControlName="fechaInicio">
         </div>
         <div class="col s12 l6">
           <label>Fin</label>
-          <input  formControlName="fechaFin" type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
+          <!-- <input formControlName="fechaFin" 
+                  type="text" 
+                  class="datepicker" 
+                  materialize="pickadate"
+                  [materializeParams]="[{
+                    closeOnSelect: false, 
+                    selectMonths: true,
+                    format: 'dd/mm/yyyy', 
+                    firstDay: 1, 
+                    selectYears: 2,
+                    today: 'Hoy',
+                    clear: 'Borrar',
+                    max: 'today',
+                    min: mesAtras,
+                    monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    weekdaysShort: ['Dom', 'Lun', 'Mar', 'Miér', 'Jue', 'Vie', 'Sab'],
+                    weekdaysAbbrev: ['D','L','M','I','J','V','S']
+                  }]"> -->
+          <input type="date" formControlName="fechaFin">
         </div>
       </div>
       <div class="row">

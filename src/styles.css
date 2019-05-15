@@ -75,3 +75,7 @@ input.invalid{
 .picker__day.picker__day--today, .picker__clear, .picker__close, .picker__today{
     color: #1e3c72;
 }
+
+.no-padding{
+    padding: 0;
+}

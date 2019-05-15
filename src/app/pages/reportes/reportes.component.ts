@@ -14,6 +14,7 @@ export class ReportesComponent implements OnInit {
 
   reportes: FormGroup
   categorias
+  mesAtras = moment().subtract(1, 'months').format('DD/MM/YYYY')
 
   constructor(public formBuilder: FormBuilder, private api: ApiService) { }
 

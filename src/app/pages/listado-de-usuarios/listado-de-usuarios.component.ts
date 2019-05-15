@@ -13,10 +13,11 @@ export class ListadoDeUsuariosComponent implements OnInit {
   users = []
   filterForm: FormGroup
   filter = {
-    fechaInicio: '',
-    fechaFin: '',
+    fechaInicio: moment().subtract(7, 'days').format('DD/MM/YYYY'),
+    fechaFin: moment().format('DD/MM/YYYY'),
     nombre: ''
   }
+  mesAtras = moment().subtract(1, 'months').format('DD/MM/YYYY')
 
   constructor(private api: ApiService, public formBuilder: FormBuilder) { }
 

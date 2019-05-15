@@ -1,10 +1,10 @@
 <main class="container row">
-  <div class="col l10">
+  <div class="col l9">
     <div class="card">
       <div class="card-content servicorp-primary-color title">
         <h5 class="white-text ">Listado de Usuarios Claro</h5>
       </div>
-      <div class="card-content">
+      <div class="card-content no-padding">
         <table class="striped">
           <thead>
             <tr>
@@ -35,7 +35,7 @@
       <div class="card-content servicorp-primary-color title">
         <h5 class="white-text ">Listado de Usuarios Entel</h5>
       </div>
-      <div class="card-content">
+      <div class="card-content no-padding">
         <table class="striped">
           <thead>
             <tr>
@@ -59,7 +59,7 @@
       </div>
     </div>
   </div>
-  <div class="col l2">
+  <div class="col l3">
     <div class="card">
       <form [formGroup]="filterForm">
         <div class="card-content servicorp-primary-color title">
@@ -74,11 +74,47 @@
           <div class="row ">
             <div class="col s12">
               <label>Inicio</label>
-              <input formControlName="fechaInicio" type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
+              <!-- <input formControlName="fechaInicio" 
+                      type="text" 
+                      class="datepicker" 
+                      materialize="pickadate"
+                      [materializeParams]="[{
+                        closeOnSelect: false, 
+                        selectMonths: true,
+                        format: 'dd/mm/yyyy', 
+                        firstDay: 1, 
+                        selectYears: 2,
+                        today: 'Hoy',
+                        clear: 'Borrar',
+                        max: 'today',
+                        min: mesAtras,
+                        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Miér', 'Jue', 'Vie', 'Sab'],
+                        weekdaysAbbrev: ['D','L','M','I','J','V','S']
+                      }]">  -->
+              <input type="date" formControlName="fechaInicio">
             </div>
             <div class="col s12">
               <label>Fin</label>
-              <input formControlName="fechaFin" type="text" class="datepicker" materialize="pickadate" [materializeParams]="[{today: 'Hoy', clear: 'Borrar', close: 'Ok', closeOnSelect: true}]">
+              <!-- <input formControlName="fechaInicio" 
+                      type="text" 
+                      class="datepicker" 
+                      materialize="pickadate"
+                      [materializeParams]="[{
+                        closeOnSelect: false, 
+                        selectMonths: true,
+                        format: 'dd/mm/yyyy', 
+                        firstDay: 1, 
+                        selectYears: 2,
+                        today: 'Hoy',
+                        clear: 'Borrar',
+                        max: 'today',
+                        min: mesAtras,
+                        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Miér', 'Jue', 'Vie', 'Sab'],
+                        weekdaysAbbrev: ['D','L','M','I','J','V','S']
+                      }]"> --> 
+              <input type="date" formControlName="fechaFin">
             </div>
           </div>
           <div class="row center">
