@@ -37,7 +37,25 @@ export class ReportesComponent implements OnInit {
       this.api.getReporte(this.reportes.value.categoria[i], this.reportes.value.empresa, moment(this.reportes.value.fechaInicio).format('YYYY-MM-DD'), moment(this.reportes.value.fechaFin).add(23, 'hours').add(59, 'minutes').format('YYYY-MM-DD HH:mm'))
       .subscribe(
         data => {
-          saveAs(data, `${reporteName + '-' + this.reportes.value.categoria[i]}-${this.reportes.value.empresa}`)
+          let formName
+          if(this.reportes.value.categoria[i] == 1){
+              formName = 'reporte_instalaciones-HFC'
+          }else if(this.reportes.value.categoria[i] == 2){
+              formName = 'reporte_instalaciones-DTH'
+          }else if(this.reportes.value.categoria[i] == 3){
+              formName = 'reporte_mantenciones-HFC'
+          }else if(this.reportes.value.categoria[i] == 4){
+              formName = 'reporte_mantenciones-DTH'
+          }else if(this.reportes.value.categoria[i] == 5){
+              formName = 'reporte_desconexiones'
+          }else if(this.reportes.value.categoria[i] == 6){
+              formName = 'reporte_instalaciones-DTH'
+          }else if(this.reportes.value.categoria[i] == 7){
+              formName = 'reporte_BAFI'
+          }else if(this.reportes.value.categoria[i] == 8){
+              formName = 'reporte_DUO'
+          }
+          saveAs(data, `${reporteName + '-' + formName}-${this.reportes.value.empresa}`)
           toast('Descargando reporte', 3000)
         },
         error => {

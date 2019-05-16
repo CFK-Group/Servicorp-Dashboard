@@ -56,7 +56,7 @@
       <div class="row">
         <div class="input-field col s12 l6">
           <h6><strong>Empresa: </strong></h6>
-          <select formControlName="empresa" materialize="material_select" class="white">
+          <select class="browser-default" formControlName="empresa">
             <option disabled>Seleccionar</option>
             <option value="Claro">Claro</option>
             <option value="Entel">Entel</option>
@@ -64,13 +64,13 @@
         </div>
         <div class="input-field col s12 l6" *ngIf="reportes.value.empresa == ''">
           <h6><strong>Categoría: </strong></h6>
-          <select formControlName="categoria" materialize="material_select" class="white">
+          <select formControlName="categoria" class="browser-default">
             <option value="" disabled>Seleccione empresa</option>
           </select>
         </div>
         <div class="input-field col s12 l6" *ngIf="reportes.value.empresa == 'Claro'">
           <h6><strong>Categoría: </strong></h6>
-          <select formControlName="categoria" materialize="material_select" class="white" multiple>
+          <select formControlName="categoria" class="browser-default" multiple>
             <option disabled>Seleccionar</option>
             <option value="1">Instalación HFC</option>
             <option value="2">Instalación DTH</option>
@@ -81,7 +81,7 @@
         </div>
         <div class="input-field col s12 l6" *ngIf="reportes.value.empresa == 'Entel'">
           <h6><strong>Categoría: </strong></h6>
-          <select formControlName="categoria" materialize="material_select" class="white" multiple>
+          <select formControlName="categoria" class="browser-default" multiple>
             <option disabled>Seleccionar</option>
             <option value="6">Instalación DTH</option>
             <option value="7">BAFI</option>
