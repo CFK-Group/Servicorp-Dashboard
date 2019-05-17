@@ -8,3 +8,15 @@
 .dropdown-content{
     width: 120% !important;
 }
+
+select{
+    height: auto;
+    transition: 500ms;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background: #cccccc !important;
+  color: #666666 !important;
+}
