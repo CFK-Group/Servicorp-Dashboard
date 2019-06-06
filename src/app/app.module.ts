@@ -21,6 +21,10 @@ import { AppRoutes } from './app-routing.module'
 import { Ng2SearchPipeModule } from 'ng2-search-filter'
 import { NgxSpinnerModule } from 'ngx-spinner'
 import { KonamiModule } from 'ngx-konami'
+import es from '@angular/common/locales/es'
+import { registerLocaleData } from '@angular/common'
+import { LOCALE_ID } from '@angular/core'
+registerLocaleData(es)
 
 @NgModule({
   declarations: [
@@ -48,7 +52,10 @@ import { KonamiModule } from 'ngx-konami'
     NgxSpinnerModule,
     KonamiModule
   ],
-  providers: [ApiService],
+  providers: [
+    { provide: LOCALE_ID, useValue: "es-ES" },
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

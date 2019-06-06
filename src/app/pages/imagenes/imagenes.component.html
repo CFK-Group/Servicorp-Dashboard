@@ -2,10 +2,10 @@
 <div class="row hide-on-med-and-down"></div>
 <div class="row hide-on-med-and-down"></div>
 <div class="row"></div>
-<div class="row">
-  <div class="col s12 l6 offset-l3">
+<div class="row container">
+  <div class="col s6">
     <div class="card-panel no-margin servicorp-primary-color title">
-      <h5 class="white-text">Descargar Imágenes (Claro)</h5>
+      <h5 class="white-text">Descargar Imágenes Claro</h5>
     </div>
     <div class="card-panel no-margin">
       <div class="row">
@@ -21,7 +21,7 @@
           <tbody>
             <tr class="hover" *ngFor="let file of files">
               <td *ngIf="(file.nombre_archivo | slice:0:5) == 'claro'">{{file.nombre_archivo | uppercase | slice:0:5}}</td>
-              <td *ngIf="(file.nombre_archivo | slice:0:5) == 'claro'">{{file.fecha_creacion | date: 'short'}}</td>
+              <td *ngIf="(file.nombre_archivo | slice:0:5) == 'claro'">{{file.fecha_creacion | date: 'short'}} hrs.</td>
               <th *ngIf="(file.nombre_archivo | slice:0:5) == 'claro'" class="right"><a href="http://genesis.xpass.cl:3001/zips/{{file.nombre_archivo}}" class="btn green accent-4"><i class="material-icons">archive</i></a></th>
             </tr>
           </tbody>
@@ -29,10 +29,9 @@
       </div>
     </div>
   </div>
-  <div class="row"></div>
-  <div class="col s12 l6 offset-l3">
+  <div class="col s6">
     <div class="card-panel no-margin servicorp-primary-color title">
-      <h5 class="white-text">Descargar Imágenes (Entel)</h5>
+      <h5 class="white-text">Descargar Imágenes Entel</h5>
     </div>
     <div class="card-panel no-margin">
       <div class="row">
@@ -48,7 +47,7 @@
           <tbody>
             <tr class="hover" *ngFor="let file of files">
               <td *ngIf="(file.nombre_archivo | slice:0:5) == 'entel'">{{file.nombre_archivo | uppercase | slice:0:5}}</td>
-              <td *ngIf="(file.nombre_archivo | slice:0:5) == 'entel'">{{file.fecha_creacion | date: 'short'}}</td>
+              <td *ngIf="(file.nombre_archivo | slice:0:5) == 'entel'">{{file.fecha_creacion | date: 'short'}} hrs.</td>
               <th *ngIf="(file.nombre_archivo | slice:0:5) == 'entel'" class="right"><a href="http://genesis.xpass.cl:3001/zips/{{file.nombre_archivo}}" class="btn green accent-4"><i class="material-icons">archive</i></a></th>
             </tr>
           </tbody>
