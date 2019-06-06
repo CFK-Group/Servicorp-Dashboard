@@ -5,3 +5,11 @@
 .picker__date-display {
     background-color: #01579b !important;
 }
+
+tr.hover{
+    transition: 500ms;
+}
+
+tr.hover:hover{
+    background-color: lightgrey !important;
+}

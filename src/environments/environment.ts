@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://genesis.xpass.cl:3001",
+  apiUrl: 'http://genesis.xpass.cl:3001',
   username: 'test',
   password: 'test'
 }

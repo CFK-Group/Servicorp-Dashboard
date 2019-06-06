@@ -16,15 +16,14 @@ export class ImagenesComponent implements OnInit {
     this.getFiles()
   }
 
-  getFiles(){
+  getFiles() {
     this.api.getZips()
-    .then((res: any) => {
-      console.log(res.data)
-      this.files = res.data
-    })
-    .catch(err => {
-      console.error('Error: ' + err.message)
-    })
+      .then((res: any) => {
+        this.files = res.data.sort((a, b) => b.id - a.id)
+      })
+      .catch(err => {
+        console.error('Error: ' + err.message)
+      })
   }
 
 }
