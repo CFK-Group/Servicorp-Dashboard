@@ -69,20 +69,18 @@
         </div>
         <div class="col s12 l6" *ngIf="reportes.value.empresa == 'Claro'">
           <h6><strong>Categoría: </strong></h6>
-          <select formControlName="categoria" class="browser-default" size="5">
-            <option value="1">Instalación HFC</option>
-            <option value="2">Instalación DTH</option>
-            <option value="3">Mantención HFC</option>
-            <option value="4">Mantención DTH</option>
-            <option value="5">Desconexión</option>
+          <select formControlName="categoria" class="browser-default" size="3">
+            <option value="instalacion">Instalación</option>
+            <option value="mantencion">Mantención</option>
+            <option value="desconexion">Desconexión</option>
           </select>
         </div>
         <div class="col s12 l6" *ngIf="reportes.value.empresa == 'Entel'">
           <h6><strong>Categoría: </strong></h6>
           <select formControlName="categoria" class="browser-default" size="3">
-            <option value="6">Instalación DTH</option>
-            <option value="7">BAFI</option>
-            <option value="8">DUO</option>
+            <option value="instalacion-DTH">Instalación DTH</option>
+            <option value="BAFI">BAFI</option>
+            <option value="DUO">DUO</option>
           </select>
         </div>
       </div>

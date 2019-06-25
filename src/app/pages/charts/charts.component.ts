@@ -125,6 +125,8 @@ export class ChartsComponent implements OnInit {
           this.data.claro.valor.push(res.data[i].cantidad)
         }
       }else if(empresa == 'entel'){
+        console.log(res);
+        
         // array con valores totales en el mismo orden de las fechas enviadas
         for(let i=0; i<res.data.length; i++){
           this.data.entel.valor.push(res.data[i].cantidad)

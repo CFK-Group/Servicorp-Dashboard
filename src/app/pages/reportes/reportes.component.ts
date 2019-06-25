@@ -40,21 +40,17 @@ export class ReportesComponent implements OnInit {
         .subscribe(
           data => {
             let formName
-            if (this.reportes.value.categoria[i] == 1) {
-              formName = 'instalaciones-HFC'
-            } else if (this.reportes.value.categoria[i] == 2) {
+            if (this.reportes.value.categoria[i] == 'instalacion') {
+              formName = 'instalacion'
+            } else if (this.reportes.value.categoria[i] == 'mantencion') {
+              formName = 'mantencion'
+            } else if (this.reportes.value.categoria[i] == 'desconexion') {
+              formName = 'desconexion'
+            } else if (this.reportes.value.categoria[i] == 'instalacion-DTH') {
               formName = 'instalaciones-DTH'
-            } else if (this.reportes.value.categoria[i] == 3) {
-              formName = 'mantenciones-HFC'
-            } else if (this.reportes.value.categoria[i] == 4) {
-              formName = 'mantenciones-DTH'
-            } else if (this.reportes.value.categoria[i] == 5) {
-              formName = 'desconexiones'
-            } else if (this.reportes.value.categoria[i] == 6) {
-              formName = 'instalaciones-DTH'
-            } else if (this.reportes.value.categoria[i] == 7) {
+            } else if (this.reportes.value.categoria[i] == 'BAFI') {
               formName = 'BAFI'
-            } else if (this.reportes.value.categoria[i] == 8) {
+            } else if (this.reportes.value.categoria[i] == 'DUO') {
               formName = 'DUO'
             }
             saveAs(data, `${reporteName + '-' + formName}-${this.reportes.value.empresa}`)
