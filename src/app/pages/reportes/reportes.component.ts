@@ -35,32 +35,30 @@ export class ReportesComponent implements OnInit {
   getReporte() {
     let reporteName = 'reporte'
     console.log('Reportes solicitados:', { empresa: this.reportes.value.empresa, tipoFormulario: this.reportes.value.categoria })
-    for (let i = 0; i < this.reportes.value.categoria.length; i++) {
-      this.api.getReporte(this.reportes.value.categoria[i], this.reportes.value.empresa, moment(this.reportes.value.fechaInicio).format('YYYY-MM-DD'), moment(this.reportes.value.fechaFin).add(23, 'hours').add(59, 'minutes').format('YYYY-MM-DD HH:mm'))
-        .subscribe(
-          data => {
-            let formName
-            if (this.reportes.value.categoria[i] == 'instalacion') {
-              formName = 'instalacion'
-            } else if (this.reportes.value.categoria[i] == 'mantencion') {
-              formName = 'mantencion'
-            } else if (this.reportes.value.categoria[i] == 'desconexion') {
-              formName = 'desconexion'
-            } else if (this.reportes.value.categoria[i] == 'instalacion-DTH') {
-              formName = 'instalaciones-DTH'
-            } else if (this.reportes.value.categoria[i] == 'BAFI') {
-              formName = 'BAFI'
-            } else if (this.reportes.value.categoria[i] == 'DUO') {
-              formName = 'DUO'
-            }
-            saveAs(data, `${reporteName + '-' + formName}-${this.reportes.value.empresa}`)
-            toast('Descargando reporte', 3000)
-          },
-          error => {
-            toast('No hay reportes en la fecha seleccionada', 3000)
+    this.api.getReporte(this.reportes.value.categoria, this.reportes.value.empresa, moment(this.reportes.value.fechaInicio).format('YYYY-MM-DD'), moment(this.reportes.value.fechaFin).add(23, 'hours').add(59, 'minutes').format('YYYY-MM-DD HH:mm'))
+      .subscribe(
+        data => {
+          let formName
+          if (this.reportes.value.categoria == 'instalacion') {
+            formName = 'instalacion'
+          } else if (this.reportes.value.categoria == 'mantencion') {
+            formName = 'mantencion'
+          } else if (this.reportes.value.categoria == 'desconexion') {
+            formName = 'desconexion'
+          } else if (this.reportes.value.categoria == 'instalacion-DTH') {
+            formName = 'instalaciones-DTH'
+          } else if (this.reportes.value.categoria == 'BAFI') {
+            formName = 'BAFI'
+          } else if (this.reportes.value.categoria == 'DUO') {
+            formName = 'DUO'
           }
-        )
-    }
+          saveAs(data, `${reporteName + '-' + formName}-${this.reportes.value.empresa}`)
+          toast('Descargando reporte', 3000)
+        },
+        error => {
+          toast('No hay reportes en la fecha seleccionada', 3000)
+        }
+      )
   }
 
   private guardarReporte(res) {
