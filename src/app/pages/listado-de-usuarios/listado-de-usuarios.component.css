@@ -1,15 +1,37 @@
 .title {
-    padding: 1px 24px;
-    border-radius: 0 0 2px 2px;
+  padding: 1px 24px;
+  border-radius: 0 0 2px 2px;
 }
+
 .picker__date-display {
-    background-color: #01579b !important;
+  background-color: #01579b !important;
 }
 
-table.claro tbody tr td{
-    width: 14.2%;
+table.claro tbody tr td {
+  width: calc(100% / 7); /* ancho para 7 colunmas */
 }
 
-table.entel tbody tr td{
-    width: 20%;
+table.entel tbody tr td {
+  width: calc(100% / 5); /* ancho para 5 colunmas */
+}
+
+tbody {
+  display: block;
+  height: 30vh;
+  overflow: auto;
+}
+
+thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+thead {
+  width: calc(100% - 1em)
+}
+
+table {
+  width: 100%;
 }

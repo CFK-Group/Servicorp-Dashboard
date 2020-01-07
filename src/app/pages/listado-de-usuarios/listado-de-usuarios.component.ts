@@ -10,7 +10,10 @@ import * as moment from 'moment'
 })
 export class ListadoDeUsuariosComponent implements OnInit {
 
-  users = []
+  users = {
+    claro: [],
+    entel: []
+  }
   filterForm: FormGroup
   filter = {
     fechaInicio: moment().subtract(7, 'days').format('DD/MM/YYYY'),
@@ -27,11 +30,6 @@ export class ListadoDeUsuariosComponent implements OnInit {
   }
 
   setFilters(){
-    console.log('fechaInicio', moment(this.filter.fechaInicio).format('YYYY-MM-DD'))
-    console.log('fechaFin', moment(this.filter.fechaFin).format('YYYY-MM-DD'))
-    console.log('*********************************')
-    console.log(this.filterForm.value.fechaInicio)
-    console.log(this.filterForm.value.fechaFin)
     if(this.filterForm.value.fechaInicio != '' && this.filterForm.value.fechaFin != ''){
       this.filter = {
         fechaInicio: moment(this.filterForm.value.fechaInicio).format('YYYY-MM-DD'),
@@ -72,13 +70,18 @@ export class ListadoDeUsuariosComponent implements OnInit {
         this.api.getTotalFormsByUserId(ids[i])
         .then((res:any) => {
           cantidades = res.data
-          this.users.push({nombre: nombres[i], empresa: empresas[i], cantidad: cantidades})
+          if (empresas[i] == 'Claro'){
+            this.users.claro.push({nombre: nombres[i], empresa: empresas[i], cantidad: cantidades})
+          }else if (empresas[i] == 'Entel'){
+            this.users.entel.push({nombre: nombres[i], empresa: empresas[i], cantidad: cantidades})
+          }
         })
         .catch(err => {
           console.log('Error:', err)
         })
       }
-      console.log('users: ',this.users)
+      console.log('usuarios de claro:', this.users.claro)
+      console.log('usuarios de entel:', this.users.entel)
     })
     .catch((err) => {
       console.log('Error:', err)
@@ -90,7 +93,10 @@ export class ListadoDeUsuariosComponent implements OnInit {
     let cantidades = []
     let nombres = []
     let empresas = []
-    this.users = []
+    this.users = {
+      claro: [],
+      entel: []
+    }
     this.api.getUsers()
     .then((res:any) => {
       for(let i=0; i<res.length; i++){
@@ -102,13 +108,18 @@ export class ListadoDeUsuariosComponent implements OnInit {
         this.api.getTotalFormsByUserIdBetweenDate(ids[i], fechaInicio, fechaFin)
         .then((res:any) => {
           cantidades = res.data
-          this.users.push({nombre: nombres[i], empresa: empresas[i], cantidad: cantidades})
+          if (empresas[i] == 'Claro'){
+            this.users.claro.push({nombre: nombres[i], empresa: empresas[i], cantidad: cantidades})
+          }else if (empresas[i] == 'Entel'){
+            this.users.entel.push({nombre: nombres[i], empresa: empresas[i], cantidad: cantidades})
+          }
         })
         .catch(err => {
           console.log('Error:', err)
         })
-        console.log('users: ',this.users)
       }
+      console.log('usuarios de claro:', this.users.claro)
+      console.log('usuarios de entel:', this.users.entel)
     })
     .catch((err) => {
       console.log('Error:', err)
