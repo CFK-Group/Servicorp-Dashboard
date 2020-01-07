@@ -5,3 +5,11 @@
 .picker__date-display {
     background-color: #01579b !important;
 }
+
+table.claro tbody tr td{
+    width: 14.2%;
+}
+
+table.entel tbody tr td{
+    width: 20%;
+}
