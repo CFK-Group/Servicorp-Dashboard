@@ -19,13 +19,13 @@
           </thead>
           <tbody>
             <tr *ngFor="let user of users.claro | filter:filter.nombre">
-              <td>{{user.nombre}}</td>
-              <td>{{user.cantidad.instalacionHfc}}</td>
-              <td>{{user.cantidad.instalacionDth}}</td>
-              <td>{{user.cantidad.mantencionHfc}}</td>
-              <td>{{user.cantidad.mantencionDth}}</td>
-              <td>{{user.cantidad.desconexion}}</td>
-              <td>{{user.cantidad.total}}</td>
+              <td>{{ user.nombre }}</td>
+              <td>{{ user.cantidad.instalacionHfc }}</td>
+              <td>{{ user.cantidad.instalacionDth }}</td>
+              <td>{{ user.cantidad.mantencionHfc }}</td>
+              <td>{{ user.cantidad.mantencionDth }}</td>
+              <td>{{ user.cantidad.desconexion }}</td>
+              <td>{{ user.cantidad.instalacionHfc + user.cantidad.instalacionDth + user.cantidad.mantencionHfc + user.cantidad.mantencionDth + user.cantidad.desconexion }}</td>
             </tr>
           </tbody>
         </table>
@@ -43,16 +43,18 @@
               <th>Instalación DTH</th>
               <th>BAFI</th>
               <th>DUO</th>
+              <th>FIBRA</th>
               <th>Total</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let user of users.entel | filter:filter.nombre">
-              <td>{{user.nombre}}</td>
-              <td>{{user.cantidad.instalacionDthEntel}}</td>
-              <td>{{user.cantidad.BAFIEntel}}</td>
-              <td>{{user.cantidad.DUOEntel}}</td>
-              <td>{{user.cantidad.total}}</td>
+              <td>{{ user.nombre }}</td>
+              <td>{{ user.cantidad.instalacionDthEntel }}</td>
+              <td>{{ user.cantidad.BAFIEntel }}</td>
+              <td>{{ user.cantidad.DUOEntel }}</td>
+              <td>{{ user.cantidad.FIBRAEntel }}</td>
+              <td>{{ user.cantidad.instalacionDthEntel + user.cantidad.BAFIEntel + user.cantidad.DUOEntel + user.cantidad.FIBRAEntel  }}</td>
             </tr>
           </tbody>
         </table>
