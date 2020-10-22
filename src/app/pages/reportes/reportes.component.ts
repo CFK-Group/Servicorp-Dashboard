@@ -33,7 +33,7 @@ export class ReportesComponent implements OnInit {
     })
   }
   getReporte() {
-    let reporteName = 'reporte'
+    toast('Solicitando reporte...', 3000)
     console.log('Reportes solicitados:', { empresa: this.reportes.value.empresa, tipoFormulario: this.reportes.value.categoria })
     this.api.getReporte(this.reportes.value.categoria, this.reportes.value.empresa, moment(this.reportes.value.fechaInicio).format('YYYY-MM-DD'), moment(this.reportes.value.fechaFin).add(23, 'hours').add(59, 'minutes').format('YYYY-MM-DD HH:mm'))
       .subscribe(
@@ -51,8 +51,10 @@ export class ReportesComponent implements OnInit {
             formName = 'BAFI'
           } else if (this.reportes.value.categoria == 'DUO') {
             formName = 'DUO'
+          } else if (this.reportes.value.categoria == 'FIBRA') {
+            formName = 'FIBRA'
           }
-          saveAs(data, `${reporteName + '-' + formName}-${this.reportes.value.empresa}`)
+          saveAs(data, `reporte-${formName}-${this.reportes.value.empresa}`)
           toast('Descargando reporte', 3000)
         },
         error => {
